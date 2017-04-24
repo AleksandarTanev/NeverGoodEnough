@@ -6,7 +6,8 @@ namespace NeverGoodEnough.Data
     public class NeverGoodEnoughContext : IdentityDbContext<ApplicationUser>
     {
         public NeverGoodEnoughContext()
-            : base("data source=(LocalDb)\\MSSQLLocalDB;initial catalog=NeverGoodEnough;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework", throwIfV1Schema: false)
+            : base("data source=.;initial catalog=NeverGoodEnough;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework", throwIfV1Schema: false)
+            //: base("data source=(LocalDb)\\MSSQLLocalDB;initial catalog=NeverGoodEnough;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework", throwIfV1Schema: false)
         {
         }
 
