@@ -1,5 +1,6 @@
 namespace NeverGoodEnough.Data
 {
+    using System.Data.Entity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using NeverGoodEnough.Models.EntityModels;
 
@@ -7,9 +8,10 @@ namespace NeverGoodEnough.Data
     {
         public NeverGoodEnoughContext()
             : base("data source=.;initial catalog=NeverGoodEnough;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework", throwIfV1Schema: false)
-            //: base("data source=(LocalDb)\\MSSQLLocalDB;initial catalog=NeverGoodEnough;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework", throwIfV1Schema: false)
         {
         }
+
+        public DbSet<GameMechanic> GameMechanics { get; set; }
 
         public static NeverGoodEnoughContext Create()
         {

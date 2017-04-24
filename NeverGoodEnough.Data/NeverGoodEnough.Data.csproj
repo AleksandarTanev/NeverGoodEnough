@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NeverGoodEnoughContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
