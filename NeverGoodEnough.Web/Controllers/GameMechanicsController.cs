@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using NeverGoodEnough.Data;
-using NeverGoodEnough.Models.EntityModels;
-
-namespace NeverGoodEnough.Web.Controllers
+﻿namespace NeverGoodEnough.Web.Controllers
 {
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Mvc;
+    using NeverGoodEnough.Data;
+    using NeverGoodEnough.Models.EntityModels;
+
+    [RoutePrefix("GameMechanics")]
     public class GameMechanicsController : Controller
     {
         private NeverGoodEnoughContext db = new NeverGoodEnoughContext();
 
         // GET: GameMechanics
-        public ActionResult Index()
+        [Route]
+        public ActionResult All()
         {
             return View(db.GameMechanics.ToList());
         }
@@ -53,7 +51,7 @@ namespace NeverGoodEnough.Web.Controllers
             {
                 db.GameMechanics.Add(gameMechanic);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("All");
             }
 
             return View(gameMechanic);
@@ -85,7 +83,7 @@ namespace NeverGoodEnough.Web.Controllers
             {
                 db.Entry(gameMechanic).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("All");
             }
             return View(gameMechanic);
         }
@@ -113,7 +111,7 @@ namespace NeverGoodEnough.Web.Controllers
             GameMechanic gameMechanic = db.GameMechanics.Find(id);
             db.GameMechanics.Remove(gameMechanic);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("All");
         }
 
         protected override void Dispose(bool disposing)
