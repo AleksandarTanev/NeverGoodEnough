@@ -93,6 +93,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingModels\GameMechanic\CreateGameMechanicBm.cs" />
+    <Compile Include="BindingModels\GameMechanic\EditGameMechanicBm.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="EntityModels\GameMechanic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,6 +107,11 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\GameMechanic\AllGameMechanicVm.cs" />
+    <Compile Include="ViewModels\GameMechanic\CreateGameMechanicVm.cs" />
+    <Compile Include="ViewModels\GameMechanic\DeleteGameMechanicVm.cs" />
+    <Compile Include="ViewModels\GameMechanic\DetailsGameMechanicVm.cs" />
+    <Compile Include="ViewModels\GameMechanic\EditGameMechanicVm.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\ConfigureTwoFactorViewModel.cs" />
@@ -118,9 +125,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BindingModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -8,18 +8,20 @@
     using NeverGoodEnough.Models.EntityModels;
 
     [RoutePrefix("GameMechanics")]
-    public class GameMechanicsController : Controller
+    public class GameMechanicController : Controller
     {
         private NeverGoodEnoughContext db = new NeverGoodEnoughContext();
 
         // GET: GameMechanics
         [Route]
+        [Route("All")]
         public ActionResult All()
         {
             return View(db.GameMechanics.ToList());
         }
 
         // GET: GameMechanics/Details/5
+        [Route("Details/{id?}")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,6 +37,7 @@
         }
 
         // GET: GameMechanics/Create
+        [Route("Create")]
         public ActionResult Create()
         {
             return View();
@@ -45,6 +48,7 @@
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("Create")]
         public ActionResult Create([Bind(Include = "Id,Name,Description")] GameMechanic gameMechanic)
         {
             if (ModelState.IsValid)
@@ -58,6 +62,7 @@
         }
 
         // GET: GameMechanics/Edit/5
+        [Route("Edit/{id?}")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,6 +82,7 @@
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("Edit/{id?}")]
         public ActionResult Edit([Bind(Include = "Id,Name,Description")] GameMechanic gameMechanic)
         {
             if (ModelState.IsValid)
@@ -89,6 +95,7 @@
         }
 
         // GET: GameMechanics/Delete/5
+        [Route("Delete/{id?}")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,6 +113,7 @@
         // POST: GameMechanics/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Route("Delete/{id?}")]
         public ActionResult DeleteConfirmed(int id)
         {
             GameMechanic gameMechanic = db.GameMechanics.Find(id);

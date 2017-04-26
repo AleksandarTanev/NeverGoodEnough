@@ -12,6 +12,7 @@ namespace NeverGoodEnough.Web.Controllers
     using NeverGoodEnough.Models.ViewModels.Manage;
 
     [Authorize]
+    [RoutePrefix("Manage")]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -53,6 +54,7 @@ namespace NeverGoodEnough.Web.Controllers
 
         //
         // GET: /Manage/Index
+        [Route]
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -80,6 +82,7 @@ namespace NeverGoodEnough.Web.Controllers
         // POST: /Manage/RemoveLogin
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("RemoveLogin")]
         public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
         {
             ManageMessageId? message;
@@ -102,6 +105,7 @@ namespace NeverGoodEnough.Web.Controllers
 
         //
         // GET: /Manage/AddPhoneNumber
+        [Route("AddPhoneNumber")]
         public ActionResult AddPhoneNumber()
         {
             return View();
@@ -111,6 +115,7 @@ namespace NeverGoodEnough.Web.Controllers
         // POST: /Manage/AddPhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("AddPhoneNumber")]
         public async Task<ActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
         {
             if (!ModelState.IsValid)
@@ -135,6 +140,7 @@ namespace NeverGoodEnough.Web.Controllers
         // POST: /Manage/EnableTwoFactorAuthentication
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("EnableTwoFactorAuthentication")]
         public async Task<ActionResult> EnableTwoFactorAuthentication()
         {
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), true);
@@ -150,6 +156,7 @@ namespace NeverGoodEnough.Web.Controllers
         // POST: /Manage/DisableTwoFactorAuthentication
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("DisableTwoFactorAuthentication")]
         public async Task<ActionResult> DisableTwoFactorAuthentication()
         {
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), false);
@@ -163,6 +170,7 @@ namespace NeverGoodEnough.Web.Controllers
 
         //
         // GET: /Manage/VerifyPhoneNumber
+        [Route("VerifyPhoneNumber")]
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
@@ -174,6 +182,7 @@ namespace NeverGoodEnough.Web.Controllers
         // POST: /Manage/VerifyPhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("VerifyPhoneNumber")]
         public async Task<ActionResult> VerifyPhoneNumber(VerifyPhoneNumberViewModel model)
         {
             if (!ModelState.IsValid)
@@ -197,6 +206,7 @@ namespace NeverGoodEnough.Web.Controllers
 
         //
         // GET: /Manage/RemovePhoneNumber
+        [Route("RemovePhoneNumber")]
         public async Task<ActionResult> RemovePhoneNumber()
         {
             var result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), null);
@@ -214,6 +224,7 @@ namespace NeverGoodEnough.Web.Controllers
 
         //
         // GET: /Manage/ChangePassword
+        [Route("ChangePassword")]
         public ActionResult ChangePassword()
         {
             return View();
@@ -223,6 +234,7 @@ namespace NeverGoodEnough.Web.Controllers
         // POST: /Manage/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("ChangePassword")]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
             if (!ModelState.IsValid)
@@ -245,6 +257,7 @@ namespace NeverGoodEnough.Web.Controllers
 
         //
         // GET: /Manage/SetPassword
+        [Route("SetPassword")]
         public ActionResult SetPassword()
         {
             return View();
@@ -254,6 +267,7 @@ namespace NeverGoodEnough.Web.Controllers
         // POST: /Manage/SetPassword
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("SetPassword")]
         public async Task<ActionResult> SetPassword(SetPasswordViewModel model)
         {
             if (ModelState.IsValid)
@@ -277,6 +291,7 @@ namespace NeverGoodEnough.Web.Controllers
 
         //
         // GET: /Manage/ManageLogins
+        [Route("ManageLogins")]
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -302,6 +317,7 @@ namespace NeverGoodEnough.Web.Controllers
         // POST: /Manage/LinkLogin
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("LinkLogin")]
         public ActionResult LinkLogin(string provider)
         {
             // Request a redirect to the external login provider to link a login for the current user
@@ -310,6 +326,7 @@ namespace NeverGoodEnough.Web.Controllers
 
         //
         // GET: /Manage/LinkLoginCallback
+        [Route("LinkLoginCallback")]
         public async Task<ActionResult> LinkLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
