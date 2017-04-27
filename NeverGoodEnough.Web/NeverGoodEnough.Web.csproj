@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -168,7 +172,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\GameMechanicController.cs" />
+    <Compile Include="Controllers\GameMechanicsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -232,11 +236,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\GameMechanic\Create.cshtml" />
-    <Content Include="Views\GameMechanic\Delete.cshtml" />
-    <Content Include="Views\GameMechanic\Details.cshtml" />
-    <Content Include="Views\GameMechanic\Edit.cshtml" />
-    <Content Include="Views\GameMechanic\All.cshtml" />
+    <Content Include="Views\GameMechanics\Create.cshtml" />
+    <Content Include="Views\GameMechanics\Delete.cshtml" />
+    <Content Include="Views\GameMechanics\Details.cshtml" />
+    <Content Include="Views\GameMechanics\Edit.cshtml" />
+    <Content Include="Views\GameMechanics\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -257,6 +261,10 @@
     <ProjectReference Include="..\NeverGoodEnough.Models\NeverGoodEnough.Models.csproj">
       <Project>{920fe1d6-d2da-4fa6-bb01-6dda6b7fdafa}</Project>
       <Name>NeverGoodEnough.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeverGoodEnough.Services\NeverGoodEnough.Services.csproj">
+      <Project>{698e8721-1238-47f3-8c40-c6bb9fd0aa38}</Project>
+      <Name>NeverGoodEnough.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

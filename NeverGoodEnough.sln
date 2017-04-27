@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeverGoodEnough.Models", "N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeverGoodEnough.Data", "NeverGoodEnough.Data\NeverGoodEnough.Data.csproj", "{B0898C35-023E-4827-A833-069F26DBB842}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeverGoodEnough.Services", "NeverGoodEnough.Services\NeverGoodEnough.Services.csproj", "{698E8721-1238-47F3-8C40-C6BB9FD0AA38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B0898C35-023E-4827-A833-069F26DBB842}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0898C35-023E-4827-A833-069F26DBB842}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0898C35-023E-4827-A833-069F26DBB842}.Release|Any CPU.Build.0 = Release|Any CPU
+		{698E8721-1238-47F3-8C40-C6BB9FD0AA38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{698E8721-1238-47F3-8C40-C6BB9FD0AA38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{698E8721-1238-47F3-8C40-C6BB9FD0AA38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{698E8721-1238-47F3-8C40-C6BB9FD0AA38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

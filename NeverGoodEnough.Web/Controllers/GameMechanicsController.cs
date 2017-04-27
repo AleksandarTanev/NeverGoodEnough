@@ -6,18 +6,27 @@
     using System.Web.Mvc;
     using NeverGoodEnough.Data;
     using NeverGoodEnough.Models.EntityModels;
+    using NeverGoodEnough.Services;
 
     [RoutePrefix("GameMechanics")]
-    public class GameMechanicController : Controller
+    public class GameMechanicsController : Controller
     {
         private NeverGoodEnoughContext db = new NeverGoodEnoughContext();
+
+        private GameMechanicService service;
+
+        public GameMechanicsController()
+        {
+            this.service = new GameMechanicService();
+        }
 
         // GET: GameMechanics
         [Route]
         [Route("All")]
         public ActionResult All()
         {
-            return View(db.GameMechanics.ToList());
+            //return View(db.GameMechanics.ToList());
+            return View(this.service.GetAllGameMechanics(0));
         }
 
         // GET: GameMechanics/Details/5
