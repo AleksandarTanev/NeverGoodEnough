@@ -6,6 +6,7 @@
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
+    using NeverGoodEnough.Models.BindingModels.GameMechanic;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -24,6 +25,13 @@
             Mapper.Initialize(expression =>
             {
                 expression.CreateMap<GameMechanic, AllGameMechanicVm>();
+                expression.CreateMap<GameMechanic, CreateGameMechanicVm>();
+                expression.CreateMap<GameMechanic, DeleteGameMechanicVm>();
+                expression.CreateMap<GameMechanic, DetailsGameMechanicVm>();
+                expression.CreateMap<GameMechanic, EditGameMechanicVm>();
+
+                expression.CreateMap<CreateGameMechanicBm, GameMechanic>();
+                expression.CreateMap<EditGameMechanicBm, GameMechanic>();
             });
         }
     }

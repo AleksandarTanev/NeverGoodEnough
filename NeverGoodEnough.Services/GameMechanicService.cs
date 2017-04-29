@@ -3,10 +3,11 @@
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
+    using NeverGoodEnough.Models.BindingModels.GameMechanic;
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.GameMechanic;
 
-    public class GameMechanicService : Service
+    public class GameMechanicService : Service, IGameMechanicService
     {
         public IEnumerable<AllGameMechanicVm> GetAllGameMechanics(int userId)
         {
@@ -16,9 +17,48 @@
             return Mapper.Instance.Map<IEnumerable<GameMechanic>, IEnumerable<AllGameMechanicVm>>(mechanics);
         }
 
-        public AllGameMechanicVm GetGameMechanicDetailes(int gameMechanicId)
+        public DetailsGameMechanicVm GetDetailGameMechanic(int? gameMechanicId)
         {
-            return null;
+            GameMechanic gameMechanic = this.Context.GameMechanics.Find(gameMechanicId);
+
+            return Mapper.Instance.Map<GameMechanic, DetailsGameMechanicVm>(gameMechanic);
+        }
+
+        public void CreateGameMechanic(CreateGameMechanicBm bm)
+        {
+            this.Context.GameMechanics.Add(Mapper.Instance.Map<CreateGameMechanicBm, GameMechanic>(bm));
+            this.Context.SaveChanges();
+        }
+
+        public EditGameMechanicVm GetEditGameMechanic(int? gameMechanicId)
+        {
+            GameMechanic gameMechanic = this.Context.GameMechanics.Find(gameMechanicId);
+
+            return Mapper.Instance.Map<GameMechanic, EditGameMechanicVm>(gameMechanic);
+        }
+
+        public void EditGameMechanic(EditGameMechanicBm bm)
+        {
+            GameMechanic gameMechanic = this.Context.GameMechanics.Find(bm.Id);
+
+            gameMechanic.Name = bm.Name;
+            gameMechanic.Description = bm.Description;
+
+            this.Context.SaveChanges();
+        }
+
+        public DeleteGameMechanicVm GetDeleteGameMechanic(int? gameMechanicId)
+        {
+            GameMechanic gameMechanic = this.Context.GameMechanics.Find(gameMechanicId);
+
+            return Mapper.Instance.Map<GameMechanic, DeleteGameMechanicVm>(gameMechanic);
+        }
+
+        public void DeleteGameMechanic(int? id)
+        {
+            GameMechanic gameMechanic = this.Context.GameMechanics.Find(id);
+            this.Context.GameMechanics.Remove(gameMechanic);
+            this.Context.SaveChanges();
         }
     }
 }
