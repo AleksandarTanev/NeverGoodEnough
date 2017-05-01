@@ -1,11 +1,12 @@
 ﻿namespace NeverGoodEnough.Web.Controllers
 {
     using System.Net;
+    using System.Web;
     using System.Web.Mvc;
     using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
     using NeverGoodEnough.Data;
     using NeverGoodEnough.Models.BindingModels.GameMechanic;
-    using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.GameMechanic;
     using NeverGoodEnough.Services;
 
@@ -27,9 +28,7 @@
         [Route("All")]
         public ActionResult All()
         {
-            //return View(db.GameMechanics.ToList());
-            var user = User.Identity.GetUserId();
-            return View(this.service.GetAllGameMechanics(0));
+            return View(this.service.GetAllGameMechanics(User.Identity.GetUserId()));
         }
 
         // GET: GameMechanics/Details/5

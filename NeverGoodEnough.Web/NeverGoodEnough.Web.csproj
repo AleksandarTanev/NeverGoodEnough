@@ -282,6 +282,7 @@
     <Content Include="Views\GameMechanics\Details.cshtml" />
     <Content Include="Views\GameMechanics\Edit.cshtml" />
     <Content Include="Views\GameMechanics\All.cshtml" />
+    <Content Include="Views\Shared\_MenuPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

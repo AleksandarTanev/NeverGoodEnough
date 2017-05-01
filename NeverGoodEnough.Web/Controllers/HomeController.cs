@@ -6,6 +6,7 @@
     public class HomeController : Controller
     {
         [Route]
+        [Route("Index")]
         public ActionResult Index()
         {
             return View();

@@ -1,5 +1,6 @@
 ﻿namespace NeverGoodEnough.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
@@ -9,9 +10,17 @@
 
     public class GameMechanicService : Service, IGameMechanicService
     {
-        public IEnumerable<AllGameMechanicVm> GetAllGameMechanics(int userId)
-        {
+        public IEnumerable<AllGameMechanicVm> GetAllGameMechanics(string userId)
+        {/*
+            var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
 
+            if (engineer == null)
+            {
+                throw new Exception();
+            }
+
+            var mechanics = this.Context.GameMechanics.Where(g => g.Engineer.Id == engineer.Id);
+            */
             var mechanics = this.Context.GameMechanics.ToList();
 
             return Mapper.Instance.Map<IEnumerable<GameMechanic>, IEnumerable<AllGameMechanicVm>>(mechanics);

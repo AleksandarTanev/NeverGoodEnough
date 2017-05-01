@@ -13,16 +13,20 @@ namespace NeverGoodEnough.Web.Controllers
 {
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.Account;
+    using NeverGoodEnough.Services;
 
     [Authorize]
     [RoutePrefix("Account")]
     public class AccountController : Controller
     {
+        private AccountService service;
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
         public AccountController()
         {
+            this.service = new AccountService();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -162,8 +166,12 @@ namespace NeverGoodEnough.Web.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
+                    this.UserManager.AddToRole(user.Id, "Engineer");
+                    this.service.CreateEngineer(user);
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

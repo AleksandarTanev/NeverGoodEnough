@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav">
+        <li class="dropdown">
+            <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+                <span>Game Mechanics</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    @Html.ActionLink("Create", "Create", "GameMechanics", null, null)
+                </li>
+                <li>
+                    @Html.ActionLink("All", "All", "GameMechanics", null, null)
+                </li>
+            </ul>
+        </li>
+    </ul>
+}

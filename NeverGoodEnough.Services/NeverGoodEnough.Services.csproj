@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountService.cs" />
     <Compile Include="GameMechanicService.cs" />
     <Compile Include="Interfaces\IGameMechanicService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
