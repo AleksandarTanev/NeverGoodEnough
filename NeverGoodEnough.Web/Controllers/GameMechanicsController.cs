@@ -2,11 +2,14 @@
 {
     using System.Net;
     using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
     using NeverGoodEnough.Data;
     using NeverGoodEnough.Models.BindingModels.GameMechanic;
+    using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.GameMechanic;
     using NeverGoodEnough.Services;
 
+    [Authorize]
     [RoutePrefix("GameMechanics")]
     public class GameMechanicsController : Controller
     {
@@ -25,6 +28,7 @@
         public ActionResult All()
         {
             //return View(db.GameMechanics.ToList());
+            var user = User.Identity.GetUserId();
             return View(this.service.GetAllGameMechanics(0));
         }
 

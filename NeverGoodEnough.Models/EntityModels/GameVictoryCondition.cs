@@ -2,9 +2,9 @@
 {
     using System.Collections.Generic;
 
-    public class GameMechanic
+    public class GameVictoryCondition
     {
-        public GameMechanic()
+        public GameVictoryCondition()
         {
             this.Games = new HashSet<Game>();
         }

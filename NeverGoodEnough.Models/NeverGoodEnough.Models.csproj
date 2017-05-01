@@ -100,7 +100,9 @@
     <Compile Include="BindingModels\GameMechanic\CreateGameMechanicBm.cs" />
     <Compile Include="BindingModels\GameMechanic\EditGameMechanicBm.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
+    <Compile Include="EntityModels\Game.cs" />
     <Compile Include="EntityModels\GameMechanic.cs" />
+    <Compile Include="EntityModels\GameVictoryCondition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
