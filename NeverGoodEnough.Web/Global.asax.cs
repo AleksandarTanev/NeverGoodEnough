@@ -7,6 +7,8 @@
     using System.Web.Optimization;
     using System.Web.Routing;
     using NeverGoodEnough.Models.BindingModels.GameMechanic;
+    using NeverGoodEnough.Models.BindingModels.GameVictoryConditions;
+    using NeverGoodEnough.Models.ViewModels.GameVictoryConditions;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -32,6 +34,15 @@
 
                 expression.CreateMap<CreateGameMechanicBm, GameMechanic>();
                 expression.CreateMap<EditGameMechanicBm, GameMechanic>();
+
+                expression.CreateMap<GameVictoryCondition, AllGameVictoryConditionVm>();
+                expression.CreateMap<GameVictoryCondition, CreateGameVictoryConditionVm>();
+                expression.CreateMap<GameVictoryCondition, DeleteGameVictoryConditionVm>();
+                expression.CreateMap<GameVictoryCondition, DetailsGameVictoryConditionVm>();
+                expression.CreateMap<GameVictoryCondition, EditGameVictoryConditionVm>();
+
+                expression.CreateMap<CreateGameVictoryConditionBm, GameVictoryCondition>();
+                expression.CreateMap<EditGameVictoryConditionBm, GameVictoryCondition>();
             });
         }
     }

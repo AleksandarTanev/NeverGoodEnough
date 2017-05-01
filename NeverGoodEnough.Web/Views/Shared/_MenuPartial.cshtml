@@ -4,7 +4,7 @@
     <ul class="nav navbar-nav">
         <li class="dropdown">
             <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-                <span>Game Mechanics</span>
+                <span>Mechanics</span>
             </a>
             <ul class="dropdown-menu">
                 <li>
@@ -12,6 +12,20 @@
                 </li>
                 <li>
                     @Html.ActionLink("All", "All", "GameMechanics", null, null)
+                </li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+                <span>Victory Conditions</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    @Html.ActionLink("Create", "Create", "GameVictoryConditions", null, null)
+                </li>
+                <li>
+                    @Html.ActionLink("All", "All", "GameVictoryConditions", null, null)
                 </li>
             </ul>
         </li>

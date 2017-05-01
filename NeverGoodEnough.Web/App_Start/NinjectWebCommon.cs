@@ -62,6 +62,7 @@ namespace NeverGoodEnough.Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IGameMechanicService>().To<GameMechanicService>();
+            kernel.Bind<IGameVictoryConditionsService>().To<GameVictoryConditionsService>();
         }        
     }
 }

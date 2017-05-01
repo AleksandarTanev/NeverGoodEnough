@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GameMechanicsController.cs" />
+    <Compile Include="Controllers\GameVictoryConditionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -283,6 +284,11 @@
     <Content Include="Views\GameMechanics\Edit.cshtml" />
     <Content Include="Views\GameMechanics\All.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />
+    <Content Include="Views\GameVictoryConditions\Create.cshtml" />
+    <Content Include="Views\GameVictoryConditions\Delete.cshtml" />
+    <Content Include="Views\GameVictoryConditions\Details.cshtml" />
+    <Content Include="Views\GameVictoryConditions\Edit.cshtml" />
+    <Content Include="Views\GameVictoryConditions\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

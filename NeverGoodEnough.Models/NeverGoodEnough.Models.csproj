@@ -99,6 +99,8 @@
   <ItemGroup>
     <Compile Include="BindingModels\GameMechanic\CreateGameMechanicBm.cs" />
     <Compile Include="BindingModels\GameMechanic\EditGameMechanicBm.cs" />
+    <Compile Include="BindingModels\GameVictoryConditions\CreateGameVictoryConditionBm.cs" />
+    <Compile Include="BindingModels\GameVictoryConditions\EditGameVictoryConditionBm.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="EntityModels\Engineer.cs" />
     <Compile Include="EntityModels\Game.cs" />
@@ -119,6 +121,11 @@
     <Compile Include="ViewModels\GameMechanic\DeleteGameMechanicVm.cs" />
     <Compile Include="ViewModels\GameMechanic\DetailsGameMechanicVm.cs" />
     <Compile Include="ViewModels\GameMechanic\EditGameMechanicVm.cs" />
+    <Compile Include="ViewModels\GameVictoryConditions\AllGameVictoryConditionVm.cs" />
+    <Compile Include="ViewModels\GameVictoryConditions\CreateGameVictoryConditionVm.cs" />
+    <Compile Include="ViewModels\GameVictoryConditions\DeleteGameVictoryConditionVm.cs" />
+    <Compile Include="ViewModels\GameVictoryConditions\DetailsGameVictoryConditionVm.cs" />
+    <Compile Include="ViewModels\GameVictoryConditions\EditGameVictoryConditionVm.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\ConfigureTwoFactorViewModel.cs" />
