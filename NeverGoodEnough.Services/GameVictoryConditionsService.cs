@@ -1,5 +1,6 @@
 ﻿namespace NeverGoodEnough.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
@@ -11,7 +12,7 @@
     {
         public IEnumerable<AllGameVictoryConditionVm> GetAllGameMechanics(string userId)
         {
-            /*var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+            var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
 
             if (engineer == null)
             {
@@ -19,8 +20,8 @@
             }
 
             var mechanics = this.Context.GameVictoryConditions.Where(g => g.Engineer.Id == engineer.Id);
-            */
-            var mechanics = this.Context.GameVictoryConditions.ToList();
+            
+            //var mechanics = this.Context.GameVictoryConditions.ToList();
 
             return Mapper.Instance.Map<IEnumerable<GameVictoryCondition>, IEnumerable<AllGameVictoryConditionVm>>(mechanics);
         }
@@ -32,9 +33,18 @@
             return Mapper.Instance.Map<GameVictoryCondition, DetailsGameVictoryConditionVm>(gameMechanic);
         }
 
-        public void CreateGameVictoryConditioc(CreateGameVictoryConditionBm bm)
+        public void CreateGameVictoryConditioc(CreateGameVictoryConditionBm bm, string userId)
         {
-            this.Context.GameVictoryConditions.Add(Mapper.Instance.Map<CreateGameVictoryConditionBm, GameVictoryCondition>(bm));
+            var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+
+            var gameVCondition = Mapper.Instance.Map<CreateGameVictoryConditionBm, GameVictoryCondition>(bm);
+            gameVCondition.CreationDate = DateTime.Now;
+
+           // this.Context.GameVictoryConditions.Add(gameVCondition);
+
+           // gameVCondition.Engineer = engineer;
+            engineer.GameVictoryConditions.Add(gameVCondition);
+
             this.Context.SaveChanges();
         }
 

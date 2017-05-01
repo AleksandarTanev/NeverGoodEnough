@@ -4,7 +4,6 @@ namespace NeverGoodEnough.Data.Migrations
     using System.Linq;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using NeverGoodEnough.Models.EntityModels;
 
     internal sealed class Configuration : DbMigrationsConfiguration<NeverGoodEnough.Data.NeverGoodEnoughContext>
     {

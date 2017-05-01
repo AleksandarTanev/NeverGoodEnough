@@ -1,5 +1,6 @@
 ﻿namespace NeverGoodEnough.Models.ViewModels.Account
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
 
     public class RegisterViewModel
@@ -19,5 +20,13 @@
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Birth date")]
+        public DateTime BirthDate { get; set; }
     }
 }

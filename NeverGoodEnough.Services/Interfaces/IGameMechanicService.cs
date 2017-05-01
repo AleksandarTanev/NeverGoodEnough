@@ -8,7 +8,7 @@
     {
         IEnumerable<AllGameMechanicVm> GetAllGameMechanics(string userId);
         DetailsGameMechanicVm GetDetailGameMechanic(int? gameMechanicId);
-        void CreateGameMechanic(CreateGameMechanicBm bm);
+        void CreateGameMechanic(CreateGameMechanicBm bm, string userId);
         EditGameMechanicVm GetEditGameMechanic(int? gameMechanicId);
         void EditGameMechanic(EditGameMechanicBm bm);
         DeleteGameMechanicVm GetDeleteGameMechanic(int? gameMechanicId);

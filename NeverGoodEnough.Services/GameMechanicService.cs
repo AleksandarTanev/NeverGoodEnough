@@ -11,7 +11,7 @@
     public class GameMechanicService : Service, IGameMechanicService
     {
         public IEnumerable<AllGameMechanicVm> GetAllGameMechanics(string userId)
-        {/*
+        {
             var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
 
             if (engineer == null)
@@ -20,8 +20,8 @@
             }
 
             var mechanics = this.Context.GameMechanics.Where(g => g.Engineer.Id == engineer.Id);
-            */
-            var mechanics = this.Context.GameMechanics.ToList();
+            
+            //var mechanics = this.Context.GameMechanics.ToList();
 
             return Mapper.Instance.Map<IEnumerable<GameMechanic>, IEnumerable<AllGameMechanicVm>>(mechanics);
         }
@@ -33,9 +33,17 @@
             return Mapper.Instance.Map<GameMechanic, DetailsGameMechanicVm>(gameMechanic);
         }
 
-        public void CreateGameMechanic(CreateGameMechanicBm bm)
+        public void CreateGameMechanic(CreateGameMechanicBm bm, string userId)
         {
-            this.Context.GameMechanics.Add(Mapper.Instance.Map<CreateGameMechanicBm, GameMechanic>(bm));
+            var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+            var gameMechanic = Mapper.Instance.Map<CreateGameMechanicBm, GameMechanic>(bm);
+            gameMechanic.CreationDate = DateTime.Now;
+
+           // this.Context.GameMechanics.Add(gameMechanic);
+
+            //gameMechanic.Engineer = engineer;
+            engineer.GameMechanics.Add(gameMechanic);
+
             this.Context.SaveChanges();
         }
 

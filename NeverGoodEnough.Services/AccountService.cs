@@ -7,7 +7,8 @@
         public void CreateEngineer(ApplicationUser user)
         {
             var newEngineer = new Engineer();
-            newEngineer.User = user;
+            ApplicationUser appUser = this.Context.Users.Find(user.Id);
+            newEngineer.User = appUser;
 
             this.Context.Engineers.Add(newEngineer);
             this.Context.SaveChanges();

@@ -61,7 +61,7 @@
         {
             if (ModelState.IsValid)
             {
-                this.service.CreateGameVictoryConditioc(bm);
+                this.service.CreateGameVictoryConditioc(bm, User.Identity.GetUserId());
                 return RedirectToAction("All");
             }
 

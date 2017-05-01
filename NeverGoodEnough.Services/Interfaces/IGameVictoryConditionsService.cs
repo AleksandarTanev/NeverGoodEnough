@@ -8,7 +8,7 @@ namespace NeverGoodEnough.Services
     {
         IEnumerable<AllGameVictoryConditionVm> GetAllGameMechanics(string userId);
         DetailsGameVictoryConditionVm GetDetailsGameVictoryCondition(int? gameVConditionId);
-        void CreateGameVictoryConditioc(CreateGameVictoryConditionBm bm);
+        void CreateGameVictoryConditioc(CreateGameVictoryConditionBm bm, string userId);
         EditGameVictoryConditionVm GetEditGameVictoryConditio(int? gameVConditionId);
         void EditGameVictoryConditio(EditGameVictoryConditionBm bm);
         DeleteGameVictoryConditionVm GetDeleteGameVictoryCondition(int? gameVConditionId);

@@ -64,7 +64,7 @@
         {
             if (ModelState.IsValid)
             {
-                this.service.CreateGameMechanic(bm);
+                this.service.CreateGameMechanic(bm, User.Identity.GetUserId());
                 return RedirectToAction("All");
             }
 
