@@ -121,6 +121,7 @@
     <Compile Include="ViewModels\GameMechanic\DeleteGameMechanicVm.cs" />
     <Compile Include="ViewModels\GameMechanic\DetailsGameMechanicVm.cs" />
     <Compile Include="ViewModels\GameMechanic\EditGameMechanicVm.cs" />
+    <Compile Include="ViewModels\Games\AllGameVm.cs" />
     <Compile Include="ViewModels\GameVictoryConditions\AllGameVictoryConditionVm.cs" />
     <Compile Include="ViewModels\GameVictoryConditions\CreateGameVictoryConditionVm.cs" />
     <Compile Include="ViewModels\GameVictoryConditions\DeleteGameVictoryConditionVm.cs" />

@@ -1,134 +1,124 @@
 ﻿namespace NeverGoodEnough.Web.Controllers
 {
+    using System.Data.Entity;
     using System.Net;
     using System.Web.Mvc;
+    using Data;
     using Microsoft.AspNet.Identity;
-    using NeverGoodEnough.Models.BindingModels.GameMechanic;
-    using NeverGoodEnough.Models.ViewModels.GameMechanic;
-    using NeverGoodEnough.Services;
+    using NeverGoodEnough.Models.EntityModels;
+    using Services;
 
-    [Authorize]
-    [RoutePrefix("GameMechanics")]
-    public class GameMechanicsController : Controller
+    [RoutePrefix("Games")]
+    public class GamesController : Controller
     {
-        private IGameMechanicService service;
+        private NeverGoodEnoughContext db;
 
-        public GameMechanicsController(IGameMechanicService service)
+        private GamesService service;
+
+        public GamesController()
         {
-            this.service = service;
+            this.service = new GamesService();
         }
 
-        // GET: GameMechanics
-        [Route]
+        // GET: Games
         [Route("All")]
         public ActionResult All()
         {
-            return View(this.service.GetAllGameMechanics(User.Identity.GetUserId()));
+            return View(this.service.GetAllGames(User.Identity.GetUserId()));
         }
-
-        // GET: GameMechanics/Details/5
-        [Route("Details/{id?}")]
+        
+        // GET: Games/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DetailsGameMechanicVm gameMechanic = this.service.GetDetailGameMechanic(id);
-
-            if (gameMechanic == null)
+            Game game = db.Games.Find(id);
+            if (game == null)
             {
                 return HttpNotFound();
             }
-
-            return View(gameMechanic);
+            return View(game);
         }
 
-        // GET: GameMechanics/Create
-        [Route("Create")]
+        // GET: Games/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: GameMechanics/Create
+        // POST: Games/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Create")]
-        public ActionResult Create([Bind(Include = "Id,Name,Description")] CreateGameMechanicBm bm)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,CreationDate")] Game game)
         {
             if (ModelState.IsValid)
             {
-                this.service.CreateGameMechanic(bm, User.Identity.GetUserId());
+                db.Games.Add(game);
+                db.SaveChanges();
                 return RedirectToAction("All");
             }
 
-            return View();
+            return View(game);
         }
 
-        // GET: GameMechanics/Edit/5
-        [Route("Edit/{id?}")]
+        // GET: Games/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            EditGameMechanicVm gameMechanic = this.service.GetEditGameMechanic(id);
-            if (gameMechanic == null)
+            Game game = db.Games.Find(id);
+            if (game == null)
             {
                 return HttpNotFound();
             }
-            return View(gameMechanic);
+            return View(game);
         }
 
-        // POST: GameMechanics/Edit/5
+        // POST: Games/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Edit/{id?}")]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description")] EditGameMechanicBm bm)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,CreationDate")] Game game)
         {
             if (ModelState.IsValid)
             {
-                this.service.EditGameMechanic(bm);
-
+                db.Entry(game).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("All");
             }
-            return View();
+            return View(game);
         }
 
-        // GET: GameMechanics/Delete/5
-        [Route("Delete/{id?}")]
+        // GET: Games/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            DeleteGameMechanicVm gameMechanic = this.service.GetDeleteGameMechanic(id);
-
-            if (gameMechanic == null)
+            Game game = db.Games.Find(id);
+            if (game == null)
             {
                 return HttpNotFound();
             }
-
-            return View(gameMechanic);
+            return View(game);
         }
 
-        // POST: GameMechanics/Delete/5
+        // POST: Games/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Route("Delete/{id?}")]
         public ActionResult DeleteConfirmed(int id)
         {
-            this.service.DeleteGameMechanic(id);
-
+            Game game = db.Games.Find(id);
+            db.Games.Remove(game);
+            db.SaveChanges();
             return RedirectToAction("All");
         }
         /*

@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="AccountService.cs" />
     <Compile Include="GameMechanicService.cs" />
+    <Compile Include="GamesService.cs" />
     <Compile Include="GameVictoryConditionsService.cs" />
     <Compile Include="Interfaces\IGameVictoryConditionsService.cs" />
     <Compile Include="Interfaces\IGameMechanicService.cs" />
