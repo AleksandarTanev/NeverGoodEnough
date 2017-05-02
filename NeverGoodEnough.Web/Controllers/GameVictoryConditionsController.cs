@@ -57,7 +57,7 @@
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Create")]
-        public ActionResult Create([Bind(Include = "Id,Name,Description")] CreateGameVictoryConditionBm bm)
+        public ActionResult Create([Bind(Include = "Name,Description")] CreateGameVictoryConditionBm bm)
         {
             if (ModelState.IsValid)
             {

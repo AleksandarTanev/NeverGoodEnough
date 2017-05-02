@@ -21,8 +21,6 @@
 
             var mechanics = this.Context.GameMechanics.Where(g => g.Engineer.Id == engineer.Id);
             
-            //var mechanics = this.Context.GameMechanics.ToList();
-
             return Mapper.Instance.Map<IEnumerable<GameMechanic>, IEnumerable<AllGameMechanicVm>>(mechanics);
         }
 
@@ -39,9 +37,6 @@
             var gameMechanic = Mapper.Instance.Map<CreateGameMechanicBm, GameMechanic>(bm);
             gameMechanic.CreationDate = DateTime.Now;
 
-           // this.Context.GameMechanics.Add(gameMechanic);
-
-            //gameMechanic.Engineer = engineer;
             engineer.GameMechanics.Add(gameMechanic);
 
             this.Context.SaveChanges();

@@ -7,6 +7,7 @@
     using System.Web.Optimization;
     using System.Web.Routing;
     using Models.ViewModels.Games;
+    using NeverGoodEnough.Models.BindingModels.Game;
     using NeverGoodEnough.Models.BindingModels.GameMechanic;
     using NeverGoodEnough.Models.BindingModels.GameVictoryConditions;
     using NeverGoodEnough.Models.ViewModels.GameVictoryConditions;
@@ -49,6 +50,12 @@
 
                 // Game
                 expression.CreateMap<Game, AllGameVm>();
+                expression.CreateMap<Game, DeleteGameVm>();
+                expression.CreateMap<Game, EditGameVm>();
+                expression.CreateMap<Game, GreateGameVm>();
+
+                expression.CreateMap<CreateGameBm, Game>();
+                expression.CreateMap<EditGameBm, Game>();
             });
         }
     }

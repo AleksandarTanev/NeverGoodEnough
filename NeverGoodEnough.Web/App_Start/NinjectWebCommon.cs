@@ -63,6 +63,7 @@ namespace NeverGoodEnough.Web.App_Start
         {
             kernel.Bind<IGameMechanicService>().To<GameMechanicService>();
             kernel.Bind<IGameVictoryConditionsService>().To<GameVictoryConditionsService>();
+            kernel.Bind<IGamesService>().To<GamesService>();
         }        
     }
 }

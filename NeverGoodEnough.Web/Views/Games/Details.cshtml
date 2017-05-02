@@ -1,4 +1,4 @@
-﻿@model NeverGoodEnough.Models.EntityModels.Game
+﻿@model NeverGoodEnough.Models.ViewModels.Games.DetailsGameVm
 
 @{
     ViewBag.Title = "Details";
@@ -8,7 +8,7 @@
 
 <div>
     <h4>Game</h4>
-    <hr />
+    <hr/>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -36,7 +36,44 @@
 
     </dl>
 </div>
+
+<h4>GameMechanics</h4>
+@foreach (var item in Model.GameMechanics)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+<h4>GameVictoryConditions</h4>
+@foreach (var item in Model.GameVictoryConditions)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "All")
 </p>

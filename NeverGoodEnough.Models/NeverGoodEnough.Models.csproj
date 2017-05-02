@@ -101,6 +101,8 @@
     <Compile Include="BindingModels\GameMechanic\EditGameMechanicBm.cs" />
     <Compile Include="BindingModels\GameVictoryConditions\CreateGameVictoryConditionBm.cs" />
     <Compile Include="BindingModels\GameVictoryConditions\EditGameVictoryConditionBm.cs" />
+    <Compile Include="BindingModels\Game\CreateGameBm.cs" />
+    <Compile Include="BindingModels\Game\EditGameBm.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="EntityModels\Engineer.cs" />
     <Compile Include="EntityModels\Game.cs" />
@@ -122,6 +124,10 @@
     <Compile Include="ViewModels\GameMechanic\DetailsGameMechanicVm.cs" />
     <Compile Include="ViewModels\GameMechanic\EditGameMechanicVm.cs" />
     <Compile Include="ViewModels\Games\AllGameVm.cs" />
+    <Compile Include="ViewModels\Games\DeleteGameVm.cs" />
+    <Compile Include="ViewModels\Games\DetailsGameVm.cs" />
+    <Compile Include="ViewModels\Games\EditGameVm.cs" />
+    <Compile Include="ViewModels\Games\GreateGameVm.cs" />
     <Compile Include="ViewModels\GameVictoryConditions\AllGameVictoryConditionVm.cs" />
     <Compile Include="ViewModels\GameVictoryConditions\CreateGameVictoryConditionVm.cs" />
     <Compile Include="ViewModels\GameVictoryConditions\DeleteGameVictoryConditionVm.cs" />

@@ -57,7 +57,7 @@
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Create")]
-        public ActionResult Create([Bind(Include = "Id,Name,Description")] CreateGameMechanicBm bm)
+        public ActionResult Create([Bind(Include = "Name,Description")] CreateGameMechanicBm bm)
         {
             if (ModelState.IsValid)
             {

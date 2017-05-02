@@ -5,7 +5,9 @@
     using System.Web.Mvc;
     using Data;
     using Microsoft.AspNet.Identity;
+    using NeverGoodEnough.Models.BindingModels.Game;
     using NeverGoodEnough.Models.EntityModels;
+    using NeverGoodEnough.Models.ViewModels.Games;
     using Services;
 
     [RoutePrefix("Games")]
@@ -26,23 +28,27 @@
         {
             return View(this.service.GetAllGames(User.Identity.GetUserId()));
         }
-        
+
         // GET: Games/Details/5
+        [Route("Details/{id?}")]
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Game game = db.Games.Find(id);
-            if (game == null)
+            DetailsGameVm vm = this.service.GetDetailGame(id);
+
+            if (vm == null)
             {
                 return HttpNotFound();
             }
-            return View(game);
+
+            return View(vm);
         }
 
         // GET: Games/Create
+        [Route("Create")]
         public ActionResult Create()
         {
             return View();
@@ -53,31 +59,34 @@
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,CreationDate")] Game game)
+        [Route("Create")]
+        public ActionResult Create([Bind(Include = "Name,Description")] CreateGameBm bm)
         {
             if (ModelState.IsValid)
             {
-                db.Games.Add(game);
-                db.SaveChanges();
+                this.service.CreateGame(bm, User.Identity.GetUserId());
                 return RedirectToAction("All");
             }
 
-            return View(game);
+            return View();
         }
 
         // GET: Games/Edit/5
+        [Route("Edit/{id?}")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Game game = db.Games.Find(id);
-            if (game == null)
+
+            EditGameVm vm = this.service.GetEditGame(id);
+            if (vm == null)
             {
                 return HttpNotFound();
             }
-            return View(game);
+
+            return View(vm);
         }
 
         // POST: Games/Edit/5
@@ -85,50 +94,46 @@
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,CreationDate")] Game game)
+        [Route("Edit/{id?}")]
+        public ActionResult Edit([Bind(Include = "Id,Name,Description")] EditGameBm bm)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(game).State = EntityState.Modified;
-                db.SaveChanges();
+                this.service.EditGame(bm);
+
                 return RedirectToAction("All");
             }
-            return View(game);
+            return View();
         }
 
         // GET: Games/Delete/5
+        [Route("Delete/{id?}")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Game game = db.Games.Find(id);
-            if (game == null)
+
+            DeleteGameVm gameMechanic = this.service.GetDeleteGame(id);
+
+            if (gameMechanic == null)
             {
                 return HttpNotFound();
             }
-            return View(game);
+
+            return View(gameMechanic);
         }
 
         // POST: Games/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Route("Delete/{id?}")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Game game = db.Games.Find(id);
-            db.Games.Remove(game);
-            db.SaveChanges();
+            this.service.DeleteGame(id);
+
             return RedirectToAction("All");
         }
-        /*
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }*/
     }
 }
