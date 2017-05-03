@@ -23,11 +23,11 @@ namespace NeverGoodEnough.Data.Migrations
                 manager.Create(role);
             }
 
-            if (!context.Roles.Any(role => role.Name == "Admin"))
+            if (!context.Roles.Any(role => role.Name == "Administrator"))
             {
                 var store = new RoleStore<IdentityRole>(context);
                 var manager = new RoleManager<IdentityRole>(store);
-                var role = new IdentityRole("Admin");
+                var role = new IdentityRole("Administrator");
                 manager.Create(role);
             }
 

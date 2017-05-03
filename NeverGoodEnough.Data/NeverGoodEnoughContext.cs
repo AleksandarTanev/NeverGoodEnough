@@ -9,6 +9,7 @@ namespace NeverGoodEnough.Data
         public NeverGoodEnoughContext()
             : base("NeverGoodEnough", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<NeverGoodEnoughContext, NeverGoodEnough.Data.Migrations.Configuration>("NeverGoodEnough"));
         }
 
         public DbSet<Engineer> Engineers { get; set; }
