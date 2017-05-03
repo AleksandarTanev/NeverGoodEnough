@@ -15,11 +15,11 @@
     {
         private NeverGoodEnoughContext db;
 
-        private GamesService service;
+        private IGamesService service;
 
-        public GamesController()
+        public GamesController(IGamesService service)
         {
-            this.service = new GamesService();
+            this.service = service;
         }
 
         // GET: Games

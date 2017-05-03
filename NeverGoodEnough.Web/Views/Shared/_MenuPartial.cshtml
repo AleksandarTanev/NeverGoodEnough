@@ -2,14 +2,29 @@
 @if (Request.IsAuthenticated)
 {
     <ul class="nav navbar-nav">
-        
+
+        @if (this.User.IsInRole("Administrator"))
+        {
+            <li class="dropdown">
+                <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span>Engineers</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        @Html.ActionLink("All", "All", "Engineers", new { area = "Administrator" }, null)
+                    </li>
+                </ul>
+            </li>
+        }
+
         <li class="dropdown">
             <a class="dropdown-toggle" type="button" data-toggle="dropdown">
                 <span>Games</span>
             </a>
+
             <ul class="dropdown-menu">
                 <li>
-                     @Html.ActionLink("Create", "Create", "Games", null, null)
+                    @Html.ActionLink("Create", "Create", "Games", null, null)
                 </li>
                 <li>
                     @Html.ActionLink("All", "All", "Games", null, null)

@@ -19,14 +19,14 @@ namespace NeverGoodEnough.Web.Controllers
     [RoutePrefix("Account")]
     public class AccountController : Controller
     {
-        private AccountService service;
+        private IAccountService service;
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        public AccountController(IAccountService service)
         {
-            this.service = new AccountService();
+            this.service = service;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )

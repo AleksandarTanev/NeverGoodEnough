@@ -2,7 +2,7 @@
 {
     using NeverGoodEnough.Models.EntityModels;
 
-    public class AccountService : Service
+    public class AccountService : Service, IAccountService
     {
         public void CreateEngineer(ApplicationUser user)
         {

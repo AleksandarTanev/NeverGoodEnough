@@ -10,6 +10,7 @@
     using NeverGoodEnough.Models.BindingModels.Game;
     using NeverGoodEnough.Models.BindingModels.GameMechanic;
     using NeverGoodEnough.Models.BindingModels.GameVictoryConditions;
+    using NeverGoodEnough.Models.ViewModels;
     using NeverGoodEnough.Models.ViewModels.GameVictoryConditions;
 
     public class MvcApplication : System.Web.HttpApplication
@@ -56,6 +57,13 @@
 
                 expression.CreateMap<CreateGameBm, Game>();
                 expression.CreateMap<EditGameBm, Game>();
+
+                // Engineer
+                expression.CreateMap<Engineer, AllEngineerVm>()
+                    .ForMember(vm => vm.Name, configurationExpression => configurationExpression.MapFrom(engineer => engineer.User.Name))
+                    .ForMember(vm => vm.Games, configurationExpression => configurationExpression.MapFrom(engineer => engineer.Games.Count))
+                    .ForMember(vm => vm.GameMechanics, configurationExpression => configurationExpression.MapFrom(engineer => engineer.GameMechanics.Count))
+                    .ForMember(vm => vm.GameVictoryConditions, configurationExpression => configurationExpression.MapFrom(engineer => engineer.GameVictoryConditions.Count));
             });
         }
     }
