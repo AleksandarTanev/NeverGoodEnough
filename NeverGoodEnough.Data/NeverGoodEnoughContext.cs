@@ -8,7 +8,6 @@ namespace NeverGoodEnough.Data
     {
         public NeverGoodEnoughContext()
             : base("NeverGoodEnough", throwIfV1Schema: false)
-            //: base("Server=06a9b09a-1d8b-4be5-a6e3-a75a00f5fa63.sqlserver.sequelizer.com;Database=db06a9b09a1d8b4be5a6e3a75a00f5fa63;User ID=vhnvawpgprabinwd;Password=hzQMMgVTNgebamERTt3FQ6SRNF24UY73KKXn87ARDUk3XHpyjss8MuAkQ78fn27X", throwIfV1Schema: false)
         {
         }
 
