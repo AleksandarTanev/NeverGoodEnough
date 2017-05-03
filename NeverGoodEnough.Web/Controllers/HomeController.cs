@@ -2,7 +2,6 @@
 {
     using System.Web.Mvc;
 
-    [RoutePrefix("Home")]
     public class HomeController : Controller
     {
         [Route]
