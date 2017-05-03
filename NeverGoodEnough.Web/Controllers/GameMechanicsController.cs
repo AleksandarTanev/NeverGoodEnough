@@ -6,6 +6,7 @@
     using NeverGoodEnough.Models.BindingModels.GameMechanic;
     using NeverGoodEnough.Models.ViewModels.GameMechanic;
     using NeverGoodEnough.Services;
+    using NeverGoodEnough.Services.Interfaces;
 
     [Authorize]
     [RoutePrefix("GameMechanics")]

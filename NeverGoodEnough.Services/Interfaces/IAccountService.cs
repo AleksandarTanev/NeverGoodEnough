@@ -1,4 +1,4 @@
-namespace NeverGoodEnough.Services
+namespace NeverGoodEnough.Services.Interfaces
 {
     using NeverGoodEnough.Models.EntityModels;
 

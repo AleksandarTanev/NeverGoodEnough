@@ -5,6 +5,7 @@
     using AutoMapper;
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels;
+    using NeverGoodEnough.Services.Interfaces;
 
     public class EngineersService : Service, IEngineersService
     {

@@ -8,6 +8,7 @@
     using NeverGoodEnough.Models.BindingModels.Game;
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.Games;
+    using NeverGoodEnough.Services.Interfaces;
     using Services;
 
     [RoutePrefix("Games")]

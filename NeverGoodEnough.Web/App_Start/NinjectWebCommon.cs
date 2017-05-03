@@ -1,13 +1,15 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NeverGoodEnough.Web.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NeverGoodEnough.Web.App_Start.NinjectWebCommon), "Stop")]
+using NeverGoodEnough.Web;
 
-namespace NeverGoodEnough.Web.App_Start
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
+
+namespace NeverGoodEnough.Web
 {
     using System;
     using System.Web;
-
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using NeverGoodEnough.Services;
+    using NeverGoodEnough.Services.Interfaces;
     using Ninject;
     using Ninject.Web.Common;
 

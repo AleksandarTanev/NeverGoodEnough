@@ -1,6 +1,7 @@
 ﻿namespace NeverGoodEnough.Services
 {
     using NeverGoodEnough.Models.EntityModels;
+    using NeverGoodEnough.Services.Interfaces;
 
     public class AccountService : Service, IAccountService
     {

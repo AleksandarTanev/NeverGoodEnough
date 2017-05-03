@@ -1,4 +1,4 @@
-namespace NeverGoodEnough.Services
+namespace NeverGoodEnough.Services.Interfaces
 {
     using System.Collections.Generic;
     using NeverGoodEnough.Models.BindingModels.Game;

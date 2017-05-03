@@ -9,6 +9,7 @@
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.GameMechanic;
     using NeverGoodEnough.Models.ViewModels.GameVictoryConditions;
+    using NeverGoodEnough.Services.Interfaces;
 
     public class GamesService : Service, IGamesService
     {

@@ -6,6 +6,7 @@
     using NeverGoodEnough.Services;
     using System.Net;
     using System.Web.Mvc;
+    using NeverGoodEnough.Services.Interfaces;
 
     [Authorize]
     [RoutePrefix("GameVictoryConditions")]

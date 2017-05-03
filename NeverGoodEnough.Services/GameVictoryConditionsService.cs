@@ -7,6 +7,7 @@
     using NeverGoodEnough.Models.BindingModels.GameVictoryConditions;
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.GameVictoryConditions;
+    using NeverGoodEnough.Services.Interfaces;
 
     public class GameVictoryConditionsService : Service, IGameVictoryConditionsService
     {

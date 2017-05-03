@@ -7,6 +7,7 @@
     using NeverGoodEnough.Models.BindingModels.GameMechanic;
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.GameMechanic;
+    using NeverGoodEnough.Services.Interfaces;
 
     public class GameMechanicService : Service, IGameMechanicService
     {
