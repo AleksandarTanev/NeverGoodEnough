@@ -11,6 +11,9 @@
             this.context = new NeverGoodEnoughContext();
         }
 
-        protected NeverGoodEnoughContext Context => this.context;
+        protected NeverGoodEnoughContext Context
+        {
+            get { return this.context; }
+        }
     }
 }
