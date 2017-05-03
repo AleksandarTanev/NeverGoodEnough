@@ -66,6 +66,8 @@
     <Compile Include="GameMechanicService.cs" />
     <Compile Include="GamesService.cs" />
     <Compile Include="GameVictoryConditionsService.cs" />
+    <Compile Include="Interfaces\IEngineersService.cs" />
+    <Compile Include="Interfaces\IAccountService.cs" />
     <Compile Include="Interfaces\IGamesService.cs" />
     <Compile Include="Interfaces\IGameVictoryConditionsService.cs" />
     <Compile Include="Interfaces\IGameMechanicService.cs" />
