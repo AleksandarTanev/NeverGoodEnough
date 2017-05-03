@@ -96,5 +96,111 @@
             this.Context.Games.Remove(game);
             this.Context.SaveChanges();
         }
+
+        public void AddMechanicToGame(int gameId, int mechanicId, string userId)
+        {
+            var currentEngineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+
+            Game game = this.Context.Games.Find(gameId);
+            GameMechanic gameMechanic = this.Context.GameMechanics.Find(mechanicId);
+
+            if (game == null)
+            {
+                throw new Exception();
+            }
+            else if (gameMechanic == null)
+            {
+                throw new Exception();
+            }
+
+            if (game.Engineer.Id != currentEngineer.Id || gameMechanic.Engineer.Id != currentEngineer.Id)
+            {
+                throw new Exception();
+            }
+
+            game.GameMechanics.Add(gameMechanic);
+            this.Context.SaveChanges();
+        }
+
+        public void AddVictoryConditionToGame(int gameId, int victoryConditionId, string userId)
+        {
+            var currentEngineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+
+            Game game = this.Context.Games.Find(gameId);
+            GameVictoryCondition gameVictoryCondition = this.Context.GameVictoryConditions.Find(victoryConditionId);
+
+            if (game == null)
+            {
+                throw new Exception();
+            }
+            else if (gameVictoryCondition == null)
+            {
+                throw new Exception();
+            }
+
+            if (game.Engineer.Id != currentEngineer.Id || gameVictoryCondition.Engineer.Id != currentEngineer.Id)
+            {
+                throw new Exception();
+            }
+
+            game.GameVictoryConditions.Add(gameVictoryCondition);
+            this.Context.SaveChanges();
+        }
+
+        public void RemoveMechanicFromGame(int gameId, int mechanicId, string userId)
+        {
+            var currentEngineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+
+            Game game = this.Context.Games.Find(gameId);
+            GameMechanic gameMechanic = this.Context.GameMechanics.Find(mechanicId);
+
+            if (game == null)
+            {
+                throw new Exception();
+            }
+            else if (gameMechanic == null)
+            {
+                throw new Exception();
+            }
+
+            if (game.Engineer.Id != currentEngineer.Id || gameMechanic.Engineer.Id != currentEngineer.Id)
+            {
+                throw new Exception();
+            }
+
+            if (game.GameMechanics.Contains(gameMechanic))
+            {
+                game.GameMechanics.Remove(gameMechanic);
+                this.Context.SaveChanges();
+            }
+        }
+
+        public void RemoveVictoryConditionFromGame(int gameId, int victoryConditionId, string userId)
+        {
+            var currentEngineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+
+            Game game = this.Context.Games.Find(gameId);
+            GameVictoryCondition gameVictoryCondition = this.Context.GameVictoryConditions.Find(victoryConditionId);
+
+            if (game == null)
+            {
+                throw new Exception();
+            }
+            else if (gameVictoryCondition == null)
+            {
+                throw new Exception();
+            }
+
+            if (game.Engineer.Id != currentEngineer.Id || gameVictoryCondition.Engineer.Id != currentEngineer.Id)
+            {
+                throw new Exception();
+            }
+
+            if (game.GameVictoryConditions.Contains(gameVictoryCondition))
+            {
+                game.GameVictoryConditions.Remove(gameVictoryCondition);
+                this.Context.SaveChanges();
+            }
+        }
     }
 }

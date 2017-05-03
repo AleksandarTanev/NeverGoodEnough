@@ -1,0 +1,4 @@
+﻿@model IEnumerable<NeverGoodEnough.Models.ViewModels.GameVictoryConditions.AllGameVictoryConditionVm>
+
+@Html.Label("VictoryCondition", "Available victory condition:")
+@Html.DropDownList("victoryConditionId", new SelectList(Model, "Id", "Name"), new { @class = "form-control", id = "VictoryCondition" })

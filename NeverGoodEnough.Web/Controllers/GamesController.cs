@@ -135,5 +135,71 @@
 
             return RedirectToAction("All");
         }
+
+        [ChildActionOnly]
+        [Route("AvailableMechanics")]
+        public ActionResult AvailableMechanics()
+        {
+            var service = new GameMechanicService();
+
+            return PartialView("_AvailableMechanics", service.GetAllGameMechanics(User.Identity.GetUserId()));
+        }
+
+        [HttpPost]
+        [Route("AddMechanic")]
+        public ActionResult AddMechanic(int gameId, int mechanicId)
+        {
+            if (ModelState.IsValid)
+            {
+                this.service.AddMechanicToGame(gameId, mechanicId, User.Identity.GetUserId());
+            }
+
+            return RedirectToAction("Details", new { id = gameId });
+        }
+
+        [ChildActionOnly]
+        [Route("AvailableVictoryConditions")]
+        public ActionResult AvailableVictoryConditions()
+        {
+            var service = new GameVictoryConditionsService();
+
+            return PartialView("_AvailableVConditions", service.GetAllGameMechanics(User.Identity.GetUserId()));
+        }
+
+        [HttpPost]
+        [Route("AddVictoryCondition")]
+        public ActionResult AddVictoryCondition(int gameId, int victoryConditionId)
+        {
+            if (ModelState.IsValid)
+            {
+                this.service.AddVictoryConditionToGame(gameId, victoryConditionId, User.Identity.GetUserId());
+            }
+
+            return RedirectToAction("Details", new { id = gameId });
+        }
+
+        [HttpPost]
+        [Route("RemoveMechanic")]
+        public ActionResult RemoveMechanic(int gameId, int mechanicId)
+        {
+            if (ModelState.IsValid)
+            {
+                this.service.RemoveMechanicFromGame(gameId, mechanicId, User.Identity.GetUserId());
+            }
+
+            return RedirectToAction("Details", new { id = gameId });
+        }
+
+        [HttpPost]
+        [Route("RemoveVictoryCondition")]
+        public ActionResult RemoveVictoryCondition(int gameId, int victoryConditionId)
+        {
+            if (ModelState.IsValid)
+            {
+                this.service.RemoveVictoryConditionFromGame(gameId, victoryConditionId, User.Identity.GetUserId());
+            }
+
+            return RedirectToAction("Details", new { id = gameId });
+        }
     }
 }
