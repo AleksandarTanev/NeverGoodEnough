@@ -30,6 +30,10 @@
         public DetailsGameVm GetDetailGame(int? gameId)
         {
             Game game = this.Context.Games.Find(gameId);
+            if (game == null)
+            {
+                throw new Exception("Game not found!");
+            }
 
             DetailsGameVm vm = new DetailsGameVm()
             {
@@ -48,6 +52,11 @@
         public void CreateGame(CreateGameBm bm, string userId)
         {
             var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+            if (engineer == null)
+            {
+                throw new Exception("Engineer not found!");
+            }
+
             var game = Mapper.Instance.Map<CreateGameBm, Game>(bm);
             game.CreationDate = DateTime.Now;
 
@@ -59,6 +68,10 @@
         public EditGameVm GetEditGame(int? Id)
         {
             Game game = this.Context.Games.Find(Id);
+            if (game == null)
+            {
+                throw new Exception("Game not found!");
+            }
 
             EditGameVm vm = new EditGameVm()
             {
@@ -77,6 +90,10 @@
         public void EditGame(EditGameBm bm)
         {
             Game game = this.Context.Games.Find(bm.Id);
+            if (game == null)
+            {
+                throw new Exception("Game not found!");
+            }
 
             game.Name = bm.Name;
             game.Description = bm.Description;
@@ -87,6 +104,10 @@
         public DeleteGameVm GetDeleteGame(int? id)
         {
             Game game = this.Context.Games.Find(id);
+            if (game == null)
+            {
+                throw new Exception("Game not found!");
+            }
 
             return Mapper.Instance.Map<Game, DeleteGameVm>(game);
         }
@@ -94,6 +115,11 @@
         public void DeleteGame(int? id)
         {
             Game game = this.Context.Games.Find(id);
+            if (game == null)
+            {
+                throw new Exception("Game not found!");
+            }
+
             this.Context.Games.Remove(game);
             this.Context.SaveChanges();
         }
@@ -101,22 +127,26 @@
         public void AddMechanicToGame(int gameId, int mechanicId, string userId)
         {
             var currentEngineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+            if (currentEngineer == null)
+            {
+                throw new Exception("Engineer not found!");
+            }
 
             Game game = this.Context.Games.Find(gameId);
-            GameMechanic gameMechanic = this.Context.GameMechanics.Find(mechanicId);
-
             if (game == null)
             {
-                throw new Exception();
+                throw new Exception("Game not found!");
             }
-            else if (gameMechanic == null)
+
+            GameMechanic gameMechanic = this.Context.GameMechanics.Find(mechanicId);
+            if (gameMechanic == null)
             {
-                throw new Exception();
+                throw new Exception("Mechanic not found!");
             }
 
             if (game.Engineer.Id != currentEngineer.Id || gameMechanic.Engineer.Id != currentEngineer.Id)
             {
-                throw new Exception();
+                throw new Exception("Incorrect engineer!");
             }
 
             game.GameMechanics.Add(gameMechanic);
@@ -126,22 +156,26 @@
         public void AddVictoryConditionToGame(int gameId, int victoryConditionId, string userId)
         {
             var currentEngineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+            if (currentEngineer == null)
+            {
+                throw new Exception("Engineer not found!");
+            }
 
             Game game = this.Context.Games.Find(gameId);
-            GameVictoryCondition gameVictoryCondition = this.Context.GameVictoryConditions.Find(victoryConditionId);
-
             if (game == null)
             {
-                throw new Exception();
+                throw new Exception("Game not found!");
             }
-            else if (gameVictoryCondition == null)
+
+            GameVictoryCondition gameVictoryCondition = this.Context.GameVictoryConditions.Find(victoryConditionId);
+            if (gameVictoryCondition == null)
             {
-                throw new Exception();
+                throw new Exception("Victory Condition not found!");
             }
 
             if (game.Engineer.Id != currentEngineer.Id || gameVictoryCondition.Engineer.Id != currentEngineer.Id)
             {
-                throw new Exception();
+                throw new Exception("Incorrect engineer!");
             }
 
             game.GameVictoryConditions.Add(gameVictoryCondition);
@@ -151,22 +185,26 @@
         public void RemoveMechanicFromGame(int gameId, int mechanicId, string userId)
         {
             var currentEngineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+            if (currentEngineer == null)
+            {
+                throw new Exception("Engineer not found!");
+            }
 
             Game game = this.Context.Games.Find(gameId);
-            GameMechanic gameMechanic = this.Context.GameMechanics.Find(mechanicId);
-
             if (game == null)
             {
-                throw new Exception();
+                throw new Exception("Game not found!");
             }
-            else if (gameMechanic == null)
+
+            GameMechanic gameMechanic = this.Context.GameMechanics.Find(mechanicId);
+            if (gameMechanic == null)
             {
-                throw new Exception();
+                throw new Exception("Mechanic not found!");
             }
 
             if (game.Engineer.Id != currentEngineer.Id || gameMechanic.Engineer.Id != currentEngineer.Id)
             {
-                throw new Exception();
+                throw new Exception("Incorrect engineer!");
             }
 
             if (game.GameMechanics.Contains(gameMechanic))
@@ -179,22 +217,27 @@
         public void RemoveVictoryConditionFromGame(int gameId, int victoryConditionId, string userId)
         {
             var currentEngineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+            if (currentEngineer == null)
+            {
+                throw new Exception("Engineer not found!");
+            }
 
             Game game = this.Context.Games.Find(gameId);
-            GameVictoryCondition gameVictoryCondition = this.Context.GameVictoryConditions.Find(victoryConditionId);
-
             if (game == null)
             {
-                throw new Exception();
+                throw new Exception("Game not found!");
             }
-            else if (gameVictoryCondition == null)
+
+            GameVictoryCondition gameVictoryCondition = this.Context.GameVictoryConditions.Find(victoryConditionId);
+            if (gameVictoryCondition == null)
             {
-                throw new Exception();
+                throw new Exception("Victory Condition not found!");
             }
+
 
             if (game.Engineer.Id != currentEngineer.Id || gameVictoryCondition.Engineer.Id != currentEngineer.Id)
             {
-                throw new Exception();
+                throw new Exception("Incorrect engineer!");
             }
 
             if (game.GameVictoryConditions.Contains(gameVictoryCondition))

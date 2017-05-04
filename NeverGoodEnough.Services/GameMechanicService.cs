@@ -17,7 +17,7 @@
 
             if (engineer == null)
             {
-                throw new Exception();
+                throw new Exception("Engineer not found!");
             }
 
             var mechanics = this.Context.GameMechanics.Where(g => g.Engineer.Id == engineer.Id);
@@ -29,12 +29,22 @@
         {
             GameMechanic gameMechanic = this.Context.GameMechanics.Find(gameMechanicId);
 
+            if (gameMechanic == null)
+            {
+                throw new Exception("Mechanic not found!");
+            }
+
             return Mapper.Instance.Map<GameMechanic, DetailsGameMechanicVm>(gameMechanic);
         }
 
         public void CreateGameMechanic(CreateGameMechanicBm bm, string userId)
         {
             var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+            if (engineer == null)
+            {
+                throw new Exception("Engineer not found!");
+            }
+
             var gameMechanic = Mapper.Instance.Map<CreateGameMechanicBm, GameMechanic>(bm);
             gameMechanic.CreationDate = DateTime.Now;
 
@@ -46,6 +56,10 @@
         public EditGameMechanicVm GetEditGameMechanic(int? gameMechanicId)
         {
             GameMechanic gameMechanic = this.Context.GameMechanics.Find(gameMechanicId);
+            if (gameMechanic == null)
+            {
+                throw new Exception("Mechanic not found!");
+            }
 
             return Mapper.Instance.Map<GameMechanic, EditGameMechanicVm>(gameMechanic);
         }
@@ -53,6 +67,10 @@
         public void EditGameMechanic(EditGameMechanicBm bm)
         {
             GameMechanic gameMechanic = this.Context.GameMechanics.Find(bm.Id);
+            if (gameMechanic == null)
+            {
+                throw new Exception("Mechanic not found!");
+            }
 
             gameMechanic.Name = bm.Name;
             gameMechanic.Description = bm.Description;
@@ -63,6 +81,10 @@
         public DeleteGameMechanicVm GetDeleteGameMechanic(int? gameMechanicId)
         {
             GameMechanic gameMechanic = this.Context.GameMechanics.Find(gameMechanicId);
+            if (gameMechanic == null)
+            {
+                throw new Exception("Mechanic not found!");
+            }
 
             return Mapper.Instance.Map<GameMechanic, DeleteGameMechanicVm>(gameMechanic);
         }
@@ -70,6 +92,11 @@
         public void DeleteGameMechanic(int? id)
         {
             GameMechanic gameMechanic = this.Context.GameMechanics.Find(id);
+            if (gameMechanic == null)
+            {
+                throw new Exception("Mechanic not found!");
+            }
+
             this.Context.GameMechanics.Remove(gameMechanic);
             this.Context.SaveChanges();
         }

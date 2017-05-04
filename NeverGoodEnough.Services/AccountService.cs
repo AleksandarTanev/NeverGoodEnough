@@ -9,6 +9,7 @@
         {
             var newEngineer = new Engineer();
             ApplicationUser appUser = this.Context.Users.Find(user.Id);
+
             newEngineer.User = appUser;
 
             this.Context.Engineers.Add(newEngineer);

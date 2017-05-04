@@ -17,33 +17,36 @@
 
             if (engineer == null)
             {
-                throw new Exception();
+                throw new Exception("Engineer not found!");
             }
 
             var mechanics = this.Context.GameVictoryConditions.Where(g => g.Engineer.Id == engineer.Id);
             
-            //var mechanics = this.Context.GameVictoryConditions.ToList();
-
             return Mapper.Instance.Map<IEnumerable<GameVictoryCondition>, IEnumerable<AllGameVictoryConditionVm>>(mechanics);
         }
 
         public DetailsGameVictoryConditionVm GetDetailsGameVictoryCondition(int? gameVConditionId)
         {
-            GameVictoryCondition gameMechanic = this.Context.GameVictoryConditions.Find(gameVConditionId);
+            GameVictoryCondition gameVCondition = this.Context.GameVictoryConditions.Find(gameVConditionId);
+            if (gameVCondition == null)
+            {
+                throw new Exception("Victory Condition not found!");
+            }
 
-            return Mapper.Instance.Map<GameVictoryCondition, DetailsGameVictoryConditionVm>(gameMechanic);
+            return Mapper.Instance.Map<GameVictoryCondition, DetailsGameVictoryConditionVm>(gameVCondition);
         }
 
         public void CreateGameVictoryConditioc(CreateGameVictoryConditionBm bm, string userId)
         {
             var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
+            if (engineer == null)
+            {
+                throw new Exception("Engineer not found!");
+            }
 
             var gameVCondition = Mapper.Instance.Map<CreateGameVictoryConditionBm, GameVictoryCondition>(bm);
             gameVCondition.CreationDate = DateTime.Now;
 
-           // this.Context.GameVictoryConditions.Add(gameVCondition);
-
-           // gameVCondition.Engineer = engineer;
             engineer.GameVictoryConditions.Add(gameVCondition);
 
             this.Context.SaveChanges();
@@ -51,14 +54,22 @@
 
         public EditGameVictoryConditionVm GetEditGameVictoryConditio(int? gameVConditionId)
         {
-            GameVictoryCondition gameMechanic = this.Context.GameVictoryConditions.Find(gameVConditionId);
+            GameVictoryCondition gameVCondition = this.Context.GameVictoryConditions.Find(gameVConditionId);
+            if (gameVCondition == null)
+            {
+                throw new Exception("Victory Condition not found!");
+            }
 
-            return Mapper.Instance.Map<GameVictoryCondition, EditGameVictoryConditionVm>(gameMechanic);
+            return Mapper.Instance.Map<GameVictoryCondition, EditGameVictoryConditionVm>(gameVCondition);
         }
 
         public void EditGameVictoryConditio(EditGameVictoryConditionBm bm)
         {
             GameVictoryCondition gameVCondition = this.Context.GameVictoryConditions.Find(bm.Id);
+            if (gameVCondition == null)
+            {
+                throw new Exception("Victory Condition not found!");
+            }
 
             gameVCondition.Name = bm.Name;
             gameVCondition.Description = bm.Description;
@@ -68,15 +79,24 @@
 
         public DeleteGameVictoryConditionVm GetDeleteGameVictoryCondition(int? gameVConditionId)
         {
-            GameVictoryCondition gameMechanic = this.Context.GameVictoryConditions.Find(gameVConditionId);
+            GameVictoryCondition gameVCondition = this.Context.GameVictoryConditions.Find(gameVConditionId);
+            if (gameVCondition == null)
+            {
+                throw new Exception("Victory Condition not found!");
+            }
 
-            return Mapper.Instance.Map<GameVictoryCondition, DeleteGameVictoryConditionVm>(gameMechanic);
+            return Mapper.Instance.Map<GameVictoryCondition, DeleteGameVictoryConditionVm>(gameVCondition);
         }
 
         public void DeleteGameVictoryCondition(int? id)
         {
-            GameVictoryCondition gameMechanic = this.Context.GameVictoryConditions.Find(id);
-            this.Context.GameVictoryConditions.Remove(gameMechanic);
+            GameVictoryCondition gameVCondition = this.Context.GameVictoryConditions.Find(id);
+            if (gameVCondition == null)
+            {
+                throw new Exception("Victory Condition not found!");
+            }
+
+            this.Context.GameVictoryConditions.Remove(gameVCondition);
             this.Context.SaveChanges();
         }
     }
