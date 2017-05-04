@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+}
+
+<br/>
+
+<div class="row">
+    <div class="col-md-2 text-center">
+        <h1>Profile</h1>
+    </div>
+</div>
+
+<div class="container-fluid table-bordered">
+    <div class="row">
+        <div class="col-md-2">
+            <br/>
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#" onclick="LoadPersonalInfoView()">Edit Personal Info</a></li>
+                <li><a href="#" onclick="LoadChangePasswordView()">Change password</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-10" id="cont">
+
+        </div>
+
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(LoadPersonalInfoView());
+
+        function LoadPersonalInfoView() {
+            $("#cont").load("profile/PersonalInfo");
+        }
+
+        function LoadChangePasswordView() {
+            $("#cont").load("Manage/ChangePassword");
+        }
+    </script>
+}

@@ -206,6 +206,7 @@
     <Compile Include="Controllers\GameVictoryConditionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -308,6 +309,8 @@
     <Content Include="Views\Games\All.cshtml" />
     <Content Include="Views\Games\_AvailableMechanics.cshtml" />
     <Content Include="Views\Games\_AvailableVConditions.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\_EditPersonalInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

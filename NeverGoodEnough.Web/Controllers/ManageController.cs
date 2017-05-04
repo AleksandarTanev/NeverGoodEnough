@@ -227,7 +227,7 @@ namespace NeverGoodEnough.Web.Controllers
         [Route("ChangePassword")]
         public ActionResult ChangePassword()
         {
-            return View();
+            return PartialView("ChangePassword");
         }
 
         //
