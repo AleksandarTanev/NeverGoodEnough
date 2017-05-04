@@ -3,7 +3,6 @@
     using Microsoft.AspNet.Identity;
     using NeverGoodEnough.Models.BindingModels.GameVictoryConditions;
     using NeverGoodEnough.Models.ViewModels.GameVictoryConditions;
-    using NeverGoodEnough.Services;
     using System.Net;
     using System.Web.Mvc;
     using NeverGoodEnough.Services.Interfaces;

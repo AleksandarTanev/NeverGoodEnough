@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
 
+    [Authorize]
     [RoutePrefix("Profile")]
     public class ProfileController : Controller
     {

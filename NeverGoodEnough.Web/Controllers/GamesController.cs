@@ -1,16 +1,15 @@
 ﻿namespace NeverGoodEnough.Web.Controllers
 {
-    using System.Data.Entity;
     using System.Net;
     using System.Web.Mvc;
     using Data;
     using Microsoft.AspNet.Identity;
     using NeverGoodEnough.Models.BindingModels.Game;
-    using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.Games;
     using NeverGoodEnough.Services.Interfaces;
     using Services;
 
+    [Authorize]
     [RoutePrefix("Games")]
     public class GamesController : Controller
     {

@@ -2,7 +2,9 @@
 {
     using System.Web.Mvc;
     using NeverGoodEnough.Services;
+    using NeverGoodEnough.Web.Attributes;
 
+    [MyAuthorize(Roles = "Administrator")]
     [RouteArea("Administrator")]
     [RoutePrefix("Engineers")]
     public class EngineersController : Controller

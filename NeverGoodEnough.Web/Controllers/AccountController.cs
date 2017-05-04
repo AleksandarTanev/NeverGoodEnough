@@ -9,7 +9,6 @@
     using Microsoft.Owin.Security;
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.Account;
-    using NeverGoodEnough.Services;
     using NeverGoodEnough.Services.Interfaces;
 
     [Authorize]
