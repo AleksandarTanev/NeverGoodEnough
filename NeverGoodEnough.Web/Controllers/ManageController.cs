@@ -227,7 +227,7 @@ namespace NeverGoodEnough.Web.Controllers
         [Route("ChangePassword")]
         public ActionResult ChangePassword()
         {
-            return PartialView("ChangePassword");
+            return PartialView("_ChangePassword");
         }
 
         //
@@ -239,7 +239,7 @@ namespace NeverGoodEnough.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return PartialView("_ChangePassword", model);
             }
             var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
             if (result.Succeeded)
@@ -249,10 +249,11 @@ namespace NeverGoodEnough.Web.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+
+                return PartialView("_ChangePasswordSuccess", model);
             }
             AddErrors(result);
-            return View(model);
+            return PartialView("_ChangePassword", model);
         }
 
         //
