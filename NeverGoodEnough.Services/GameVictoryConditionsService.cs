@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
+    using NeverGoodEnough.Data.Interfaces;
     using NeverGoodEnough.Models.BindingModels.GameVictoryConditions;
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.GameVictoryConditions;
@@ -11,6 +12,15 @@
 
     public class GameVictoryConditionsService : Service, IGameVictoryConditionsService
     {
+        public GameVictoryConditionsService() : base()
+        {
+
+        }
+
+        public GameVictoryConditionsService(INeverGoodEnoughContext context) : base(context)
+        {
+        }
+
         public IEnumerable<AllGameVictoryConditionVm> GetAllGameMechanics(string userId)
         {
             var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);

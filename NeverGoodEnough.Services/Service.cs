@@ -1,19 +1,20 @@
 ﻿namespace NeverGoodEnough.Services
 {
     using NeverGoodEnough.Data;
+    using NeverGoodEnough.Data.Interfaces;
 
     public class Service
     {
-        private NeverGoodEnoughContext context;
-
         protected Service()
         {
-            this.context = new NeverGoodEnoughContext();
+            this.Context = new NeverGoodEnoughContext();
         }
 
-        protected NeverGoodEnoughContext Context
+        protected Service(INeverGoodEnoughContext context)
         {
-            get { return this.context; }
+            this.Context = context;
         }
+
+        protected INeverGoodEnoughContext Context { get; }
     }
 }

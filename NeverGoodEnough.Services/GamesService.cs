@@ -5,6 +5,7 @@
     using System.Linq;
     using AutoMapper;
     using Models.ViewModels.Games;
+    using NeverGoodEnough.Data.Interfaces;
     using NeverGoodEnough.Models.BindingModels.Game;
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.GameMechanic;
@@ -13,6 +14,15 @@
 
     public class GamesService : Service, IGamesService
     {
+        public GamesService() : base()
+        {
+
+        }
+
+        public GamesService(INeverGoodEnoughContext context) : base(context)
+        {
+        }
+
         public IEnumerable<AllGameVm> GetAllGames(string userId)
         {
             var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);

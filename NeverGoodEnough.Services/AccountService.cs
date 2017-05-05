@@ -1,10 +1,20 @@
 ﻿namespace NeverGoodEnough.Services
 {
+    using NeverGoodEnough.Data.Interfaces;
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Services.Interfaces;
 
     public class AccountService : Service, IAccountService
     {
+        public AccountService() : base()
+        {
+
+        }
+
+        public AccountService(INeverGoodEnoughContext context) : base(context)
+        {
+        }
+
         public void CreateEngineer(ApplicationUser user)
         {
             var newEngineer = new Engineer();

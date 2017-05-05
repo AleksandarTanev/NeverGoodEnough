@@ -8,6 +8,8 @@ namespace NeverGoodEnough.Web
     using System;
     using System.Web;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+    using NeverGoodEnough.Data;
+    using NeverGoodEnough.Data.Interfaces;
     using NeverGoodEnough.Services;
     using NeverGoodEnough.Services.Interfaces;
     using Ninject;

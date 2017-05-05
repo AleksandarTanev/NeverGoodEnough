@@ -2,7 +2,6 @@
 {
     using System.Net;
     using System.Web.Mvc;
-    using Data;
     using Microsoft.AspNet.Identity;
     using NeverGoodEnough.Models.BindingModels.Game;
     using NeverGoodEnough.Models.ViewModels.Games;
@@ -13,8 +12,6 @@
     [RoutePrefix("Games")]
     public class GamesController : Controller
     {
-        private NeverGoodEnoughContext db;
-
         private IGamesService service;
 
         public GamesController(IGamesService service)

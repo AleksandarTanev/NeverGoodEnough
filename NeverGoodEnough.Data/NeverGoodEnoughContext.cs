@@ -2,9 +2,10 @@ namespace NeverGoodEnough.Data
 {
     using System.Data.Entity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using NeverGoodEnough.Data.Interfaces;
     using NeverGoodEnough.Models.EntityModels;
 
-    public class NeverGoodEnoughContext : IdentityDbContext<ApplicationUser>
+    public class NeverGoodEnoughContext : IdentityDbContext<ApplicationUser>, INeverGoodEnoughContext
     {
         public NeverGoodEnoughContext()
             : base("NeverGoodEnough", throwIfV1Schema: false)
@@ -21,6 +22,10 @@ namespace NeverGoodEnough.Data
         {
             return new NeverGoodEnoughContext();
         }
+
+        public string Name { get; }
+        public string AuthenticationType { get; }
+        public bool IsAuthenticated { get; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
