@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeverGoodEnough.Web", "NeverGoodEnough.Web\NeverGoodEnough.Web.csproj", "{F18DD512-85B1-4FA0-854B-5780BD1E707D}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeverGoodEnough.Data", "NeverGoodEnough.Data\NeverGoodEnough.Data.csproj", "{B0898C35-023E-4827-A833-069F26DBB842}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeverGoodEnough.Services", "NeverGoodEnough.Services\NeverGoodEnough.Services.csproj", "{698E8721-1238-47F3-8C40-C6BB9FD0AA38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeverGoodEnough.Test", "NeverGoodEnough.Test\NeverGoodEnough.Test.csproj", "{790C9F47-B60B-4145-A9C9-5C9C23CED4AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{698E8721-1238-47F3-8C40-C6BB9FD0AA38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{698E8721-1238-47F3-8C40-C6BB9FD0AA38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{698E8721-1238-47F3-8C40-C6BB9FD0AA38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{790C9F47-B60B-4145-A9C9-5C9C23CED4AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{790C9F47-B60B-4145-A9C9-5C9C23CED4AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{790C9F47-B60B-4145-A9C9-5C9C23CED4AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{790C9F47-B60B-4145-A9C9-5C9C23CED4AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
