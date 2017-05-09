@@ -23,7 +23,7 @@
         {
             Mapper.Initialize(expression =>
             {
-                expression.CreateMap<GameMechanic, AllGameMechanicVm>();
+                expression.CreateMap<GameMechanic, AllPersonalGameMechanicVm>();
             });
         }
 

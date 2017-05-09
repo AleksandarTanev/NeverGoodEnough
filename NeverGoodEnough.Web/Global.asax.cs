@@ -9,8 +9,10 @@
     using Models.ViewModels.Games;
     using NeverGoodEnough.Models.BindingModels.Game;
     using NeverGoodEnough.Models.BindingModels.GameMechanic;
+    using NeverGoodEnough.Models.BindingModels.GameObject;
     using NeverGoodEnough.Models.BindingModels.GameVictoryConditions;
     using NeverGoodEnough.Models.ViewModels;
+    using NeverGoodEnough.Models.ViewModels.GameObject;
     using NeverGoodEnough.Models.ViewModels.GameVictoryConditions;
 
     public class MvcApplication : System.Web.HttpApplication
@@ -30,7 +32,7 @@
             Mapper.Initialize(expression =>
             {
                 // GameMechanic
-                expression.CreateMap<GameMechanic, AllGameMechanicVm>();
+                expression.CreateMap<GameMechanic, AllPersonalGameMechanicVm>();
                 expression.CreateMap<GameMechanic, CreateGameMechanicVm>();
                 expression.CreateMap<GameMechanic, DeleteGameMechanicVm>();
                 expression.CreateMap<GameMechanic, DetailsGameMechanicVm>();
@@ -48,6 +50,16 @@
 
                 expression.CreateMap<CreateGameVictoryConditionBm, GameVictoryCondition>();
                 expression.CreateMap<EditGameVictoryConditionBm, GameVictoryCondition>();
+
+                // GameVictoryCondition
+                expression.CreateMap<GameObject, AllGameObjectVm>();
+                expression.CreateMap<GameObject, CreateGameObjectVm>();
+                expression.CreateMap<GameObject, DeleteGameObjectVm>();
+                expression.CreateMap<GameObject, DetailsGameObjectVm>();
+                expression.CreateMap<GameObject, EditGameObjectVm>();
+
+                expression.CreateMap<CreateGameObjectBm, GameObject>();
+                expression.CreateMap<EditGameObjectBm, GameObject>();
 
                 // Game
                 expression.CreateMap<Game, AllGameVm>();

@@ -19,43 +19,21 @@
 
         <li class="dropdown">
             <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-                <span>Games</span>
+                <span>Personal</span>
             </a>
 
             <ul class="dropdown-menu">
                 <li>
-                    @Html.ActionLink("Create", "Create", "Games", null, null)
+                    @Html.ActionLink("Games", "All", "Games", null, null)
                 </li>
                 <li>
-                    @Html.ActionLink("All", "All", "Games", null, null)
-                </li>
-            </ul>
-        </li>
-
-        <li class="dropdown">
-            <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-                <span>Mechanics</span>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                    @Html.ActionLink("Create", "Create", "GameMechanics", null, null)
+                    @Html.ActionLink("Objects", "All", "GameObjects", null, null)
                 </li>
                 <li>
-                    @Html.ActionLink("All", "All", "GameMechanics", null, null)
-                </li>
-            </ul>
-        </li>
-
-        <li class="dropdown">
-            <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-                <span>Victory Conditions</span>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                    @Html.ActionLink("Create", "Create", "GameVictoryConditions", null, null)
+                    @Html.ActionLink("Mechanics", "All", "GameMechanics", null, null)
                 </li>
                 <li>
-                    @Html.ActionLink("All", "All", "GameVictoryConditions", null, null)
+                    @Html.ActionLink("Victory Conditions", "All", "GameVictoryConditions", null, null)
                 </li>
             </ul>
         </li>

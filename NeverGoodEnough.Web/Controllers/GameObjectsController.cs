@@ -1,32 +1,31 @@
 ﻿namespace NeverGoodEnough.Web.Controllers
 {
-    using Microsoft.AspNet.Identity;
-    using NeverGoodEnough.Models.BindingModels.GameVictoryConditions;
-    using NeverGoodEnough.Models.ViewModels.GameVictoryConditions;
     using System.Net;
     using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using NeverGoodEnough.Models.BindingModels.GameObject;
+    using NeverGoodEnough.Models.ViewModels.GameObject;
     using NeverGoodEnough.Services.Interfaces;
 
-    [Authorize]
-    [RoutePrefix("GameVictoryConditions")]
-    public class GameVictoryConditionsController : Controller
+    [RoutePrefix("GameObject")]
+    public class GameObjectsController : Controller
     {
-        private IGameVictoryConditionsService service;
+        private IGameObjectService service;
 
-        public GameVictoryConditionsController(IGameVictoryConditionsService service)
+        public GameObjectsController(IGameObjectService service)
         {
             this.service = service;
         }
 
-        // GET: GameVictoryConditions
+        // GET: GameObjects
         [Route]
         [Route("All")]
         public ActionResult All()
         {
-            return View(this.service.GetAllGameMechanics(User.Identity.GetUserId()));
+            return View(this.service.GetAllGameObject(User.Identity.GetUserId()));
         }
 
-        // GET: GameVictoryConditions/Details/5
+        // GET: GameObjects/Details/5
         [Route("Details/{id?}")]
         public ActionResult Details(int? id)
         {
@@ -34,41 +33,41 @@
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DetailsGameVictoryConditionVm gameVCondition = this.service.GetDetailsGameVictoryCondition(id);
+            DetailsGameObjectVm gameObject = this.service.GetDetailGameObject(id);
 
-            if (gameVCondition == null)
+            if (gameObject == null)
             {
                 return HttpNotFound();
             }
 
-            return View(gameVCondition);
+            return View(gameObject);
         }
 
-        // GET: GameVictoryConditions/Create
+        // GET: GameObjects/Create
         [Route("Create")]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: GameVictoryConditions/Create
+        // POST: GameObjects/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Create")]
-        public ActionResult Create([Bind(Include = "Name,Description")] CreateGameVictoryConditionBm bm)
+        public ActionResult Create([Bind(Include = "Name,Description")] CreateGameObjectBm bm)
         {
             if (ModelState.IsValid)
             {
-                this.service.CreateGameVictoryConditioc(bm, User.Identity.GetUserId());
+                this.service.CreateGameObject(bm, User.Identity.GetUserId());
                 return RedirectToAction("All");
             }
 
             return View();
         }
 
-        // GET: GameVictoryConditions/Edit/5
+        // GET: GameObjects/Edit/5
         [Route("Edit/{id?}")]
         public ActionResult Edit(int? id)
         {
@@ -77,32 +76,32 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            EditGameVictoryConditionVm gameVCondition = this.service.GetEditGameVictoryConditio(id);
-            if (gameVCondition == null)
+            EditGameObjectVm gameObject = this.service.GetEditGameObject(id);
+            if (gameObject == null)
             {
                 return HttpNotFound();
             }
-            return View(gameVCondition);
+            return View(gameObject);
         }
 
-        // POST: GameVictoryConditions/Edit/5
+        // POST: GameObjects/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Edit/{id?}")]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description")] EditGameVictoryConditionBm bm)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description")] EditGameObjectBm bm)
         {
             if (ModelState.IsValid)
             {
-                this.service.EditGameVictoryConditio(bm);
+                this.service.EditGameObject(bm);
 
                 return RedirectToAction("All");
             }
             return View();
         }
 
-        // GET: GameVictoryConditions/Delete/5
+        // GET: GameObjects/Delete/5
         [Route("Delete/{id?}")]
         public ActionResult Delete(int? id)
         {
@@ -111,23 +110,23 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            DeleteGameVictoryConditionVm gameVCondition = this.service.GetDeleteGameVictoryCondition(id);
+            DeleteGameObjectVm gameObject = this.service.GetDeleteGameObject(id);
 
-            if (gameVCondition == null)
+            if (gameObject == null)
             {
                 return HttpNotFound();
             }
 
-            return View(gameVCondition);
+            return View(gameObject);
         }
 
-        // POST: GameVictoryConditions/Delete/5
+        // POST: GameObjects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Route("Delete/{id?}")]
         public ActionResult DeleteConfirmed(int id)
         {
-            this.service.DeleteGameVictoryCondition(id);
+            this.service.DeleteGameObject(id);
 
             return RedirectToAction("All");
         }

@@ -99,14 +99,18 @@
   <ItemGroup>
     <Compile Include="BindingModels\GameMechanic\CreateGameMechanicBm.cs" />
     <Compile Include="BindingModels\GameMechanic\EditGameMechanicBm.cs" />
+    <Compile Include="BindingModels\GameObject\CreateGameObjectBm.cs" />
+    <Compile Include="BindingModels\GameObject\EditGameObjectBm.cs" />
     <Compile Include="BindingModels\GameVictoryConditions\CreateGameVictoryConditionBm.cs" />
     <Compile Include="BindingModels\GameVictoryConditions\EditGameVictoryConditionBm.cs" />
     <Compile Include="BindingModels\Game\CreateGameBm.cs" />
     <Compile Include="BindingModels\Game\EditGameBm.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="EntityModels\Engineer.cs" />
     <Compile Include="EntityModels\Game.cs" />
     <Compile Include="EntityModels\GameMechanic.cs" />
+    <Compile Include="EntityModels\GameObject.cs" />
     <Compile Include="EntityModels\GameVictoryCondition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
@@ -120,11 +124,17 @@
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\AllEngineerVm.cs" />
     <Compile Include="ViewModels\GameMechanic\AddInGameGameMechanic.cs" />
-    <Compile Include="ViewModels\GameMechanic\AllGameMechanicVm.cs" />
+    <Compile Include="ViewModels\GameMechanic\AllPersonalGameMechanicVm.cs" />
     <Compile Include="ViewModels\GameMechanic\CreateGameMechanicVm.cs" />
     <Compile Include="ViewModels\GameMechanic\DeleteGameMechanicVm.cs" />
     <Compile Include="ViewModels\GameMechanic\DetailsGameMechanicVm.cs" />
     <Compile Include="ViewModels\GameMechanic\EditGameMechanicVm.cs" />
+    <Compile Include="ViewModels\GameObject\AddInGameGameObject.cs" />
+    <Compile Include="ViewModels\GameObject\AllGameObjectVm.cs" />
+    <Compile Include="ViewModels\GameObject\CreateGameObjectVm.cs" />
+    <Compile Include="ViewModels\GameObject\DeleteGameObjectVm.cs" />
+    <Compile Include="ViewModels\GameObject\DetailsGameObjectVm.cs" />
+    <Compile Include="ViewModels\GameObject\EditGameObjectVm.cs" />
     <Compile Include="ViewModels\Games\AllGameVm.cs" />
     <Compile Include="ViewModels\Games\DeleteGameVm.cs" />
     <Compile Include="ViewModels\Games\DetailsGameVm.cs" />

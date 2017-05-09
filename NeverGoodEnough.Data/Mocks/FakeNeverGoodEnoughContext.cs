@@ -16,10 +16,17 @@
         }
 
         public DbSet<Engineer> Engineers { get; set; }
+
         public DbSet<Game> Games { get; set; }
+
         public DbSet<GameMechanic> GameMechanics { get; set; }
+
         public DbSet<GameVictoryCondition> GameVictoryConditions { get; set; }
+
+        public DbSet<GameObject> GameObjects { get; set; }
+
         public IDbSet<ApplicationUser> Users { get; set; }
+
         public IDbSet<IdentityRole> Roles { get; set; }
 
         public int SaveChanges()

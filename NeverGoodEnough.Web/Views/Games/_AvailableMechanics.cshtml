@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NeverGoodEnough.Models.ViewModels.GameMechanic.AllGameMechanicVm>
+﻿@model IEnumerable<NeverGoodEnough.Models.ViewModels.GameMechanic.AllPersonalGameMechanicVm>
 
 @Html.Label("Mechanic", "Available mechanics:")
 @Html.DropDownList("mechanicId", new SelectList(Model, "Id", "Name"), new { @class = "form-control", id = "Mechanic" })

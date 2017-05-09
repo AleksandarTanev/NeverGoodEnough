@@ -58,7 +58,7 @@
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Create")]
-        public ActionResult Create([Bind(Include = "Name,Description")] CreateGameMechanicBm bm)
+        public ActionResult Create([Bind(Include = "Name,Description,ImageUrl,Tags")] CreateGameMechanicBm bm)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Edit/{id?}")]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description")] EditGameMechanicBm bm)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,ImageUrl,Tags")] EditGameMechanicBm bm)
         {
             if (ModelState.IsValid)
             {
@@ -132,14 +132,5 @@
 
             return RedirectToAction("All");
         }
-        /*
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }*/
     }
 }

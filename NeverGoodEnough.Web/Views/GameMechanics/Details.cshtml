@@ -5,29 +5,29 @@
 }
 
 <h2>Details</h2>
+<hr />
 
-<div>
-    <h4>GameMechanic</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
+<div class="card">
+    <img class="card-image" src="@Model.ImageUrl" alt="Image"/>
+    <div class="card-container">
+        <h3>
+            Mechanic: <br/>
+            <span style="color: black;">@Html.DisplayFor(model => model.Name)</span>
+        </h3>
+        <p>
             @Html.DisplayFor(model => model.Description)
-        </dd>
-
-    </dl>
+        </p>
+        @if (@Model.Tags.Length != 0)
+        {
+            <p>@Model.Tags</p> 
+        }
+    </div>
+    <div class="card-footer">
+        Upvotes: @Model.Upvotes
+        <span style="float: right;">@Model.CreationDate.ToString("dd-MM-yyyy")</span>       
+    </div>
 </div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "All")

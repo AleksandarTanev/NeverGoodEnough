@@ -1,10 +1,10 @@
-﻿@model IEnumerable<NeverGoodEnough.Models.ViewModels.GameMechanic.AllPersonalGameMechanicVm>
+﻿@model IEnumerable<NeverGoodEnough.Models.ViewModels.GameObject.AllGameObjectVm>
 
 @{
-    ViewBag.Title = "Personal Mechanics";
+    ViewBag.Title = "Personal Objects";
 }
 
-<h2>Personal Mechanics</h2>
+<h2>All Mechanics</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -17,9 +17,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Upvotes)
-        </th>
         <th></th>
     </tr>
 
@@ -30,9 +27,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Upvotes)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

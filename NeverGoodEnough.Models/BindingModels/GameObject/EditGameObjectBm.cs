@@ -1,8 +1,8 @@
-﻿namespace NeverGoodEnough.Models.BindingModels.GameMechanic
+﻿namespace NeverGoodEnough.Models.BindingModels.GameObject
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class EditGameMechanicBm
+    public class EditGameObjectBm
     {
         [Required]
         public int Id { get; set; }
@@ -12,9 +12,5 @@
 
         [StringLength(3000), Required]
         public string Description { get; set; }
-
-        public string ImageUrl { get; set; }
-
-        public string Tags { get; set; }
     }
 }

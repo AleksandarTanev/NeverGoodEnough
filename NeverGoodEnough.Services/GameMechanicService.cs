@@ -5,6 +5,7 @@
     using System.Linq;
     using AutoMapper;
     using NeverGoodEnough.Data.Interfaces;
+    using NeverGoodEnough.Models;
     using NeverGoodEnough.Models.BindingModels.GameMechanic;
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.GameMechanic;
@@ -14,14 +15,14 @@
     {
         public GameMechanicService() : base()
         {
-            
+
         }
 
         public GameMechanicService(INeverGoodEnoughContext context) : base(context)
         {
         }
 
-        public IEnumerable<AllGameMechanicVm> GetAllGameMechanics(string userId)
+        public IEnumerable<AllPersonalGameMechanicVm> GetAllGameMechanics(string userId)
         {
             var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
 
@@ -31,8 +32,8 @@
             }
 
             var mechanics = this.Context.GameMechanics.Where(g => g.Engineer.Id == engineer.Id);
-            
-            return Mapper.Instance.Map<IEnumerable<GameMechanic>, IEnumerable<AllGameMechanicVm>>(mechanics);
+
+            return Mapper.Instance.Map<IEnumerable<GameMechanic>, IEnumerable<AllPersonalGameMechanicVm>>(mechanics);
         }
 
         public DetailsGameMechanicVm GetDetailGameMechanic(int? gameMechanicId)
@@ -44,7 +45,13 @@
                 throw new Exception("Mechanic not found!");
             }
 
-            return Mapper.Instance.Map<GameMechanic, DetailsGameMechanicVm>(gameMechanic);
+            DetailsGameMechanicVm vm = Mapper.Instance.Map<GameMechanic, DetailsGameMechanicVm>(gameMechanic);
+            if (string.IsNullOrEmpty(vm.ImageUrl))
+            {
+                vm.ImageUrl = Constants.DefaultImageUrl;
+            }
+
+            return vm;
         }
 
         public void CreateGameMechanic(CreateGameMechanicBm bm, string userId)
@@ -84,6 +91,16 @@
 
             gameMechanic.Name = bm.Name;
             gameMechanic.Description = bm.Description;
+
+            if (!string.IsNullOrEmpty(bm.ImageUrl))
+            {
+                gameMechanic.ImageUrl = bm.ImageUrl;
+            }
+
+            if (!string.IsNullOrEmpty(bm.Tags))
+            {
+                gameMechanic.Tags = bm.Tags;
+            }
 
             this.Context.SaveChanges();
         }

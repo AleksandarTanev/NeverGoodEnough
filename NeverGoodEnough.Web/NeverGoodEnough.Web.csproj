@@ -203,6 +203,7 @@
     <Compile Include="Attributes\MyAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GameMechanicsController.cs" />
+    <Compile Include="Controllers\GameObjectsController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\GameVictoryConditionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -219,6 +220,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\personal.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -315,6 +317,11 @@
     <Content Include="Views\Manage\_ChangePasswordSuccess.cshtml" />
     <Content Include="Views\Shared\Unauthorized.cshtml" />
     <Content Include="Views\Shared\CustomError.cshtml" />
+    <Content Include="Views\GameObjects\All.cshtml" />
+    <Content Include="Views\GameObjects\Create.cshtml" />
+    <Content Include="Views\GameObjects\Delete.cshtml" />
+    <Content Include="Views\GameObjects\Details.cshtml" />
+    <Content Include="Views\GameObjects\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

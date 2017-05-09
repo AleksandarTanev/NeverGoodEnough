@@ -4,9 +4,9 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class GameVictoryCondition
+    public class GameObject
     {
-        public GameVictoryCondition()
+        public GameObject()
         {
             this.Games = new HashSet<Game>();
         }

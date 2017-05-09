@@ -70,6 +70,7 @@ namespace NeverGoodEnough.Web
             kernel.Bind<IGamesService>().To<GamesService>();
             kernel.Bind<IAccountService>().To<AccountService>();
             kernel.Bind<IEngineersService>().To<EngineersService>();
+            kernel.Bind<IGameObjectService>().To<GameObjectService>();
         }        
     }
 }
