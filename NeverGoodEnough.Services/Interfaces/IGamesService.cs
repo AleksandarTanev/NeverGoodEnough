@@ -6,7 +6,8 @@ namespace NeverGoodEnough.Services.Interfaces
 
     public interface IGamesService
     {
-        IEnumerable<AllGameVm> GetAllGames(string userId);
+        IEnumerable<AllGameVm> GetAllGames();
+        IEnumerable<MyAllGameVm> GetAllGames(string userId);
         DetailsGameVm GetDetailGame(int? gameId);
         void CreateGame(CreateGameBm bm, string userId);
         EditGameVm GetEditGame(int? gameId);

@@ -23,7 +23,15 @@
         {
         }
 
-        public IEnumerable<AllGameVm> GetAllGames(string userId)
+        public IEnumerable<AllGameVm> GetAllGames()
+        {
+
+            var game = this.Context.Games.ToList();
+
+            return Mapper.Instance.Map<IEnumerable<Game>, IEnumerable<AllGameVm>>(game);
+        }
+
+        public IEnumerable<MyAllGameVm> GetAllGames(string userId)
         {
             var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
 
@@ -34,7 +42,7 @@
 
             var game = this.Context.Games.Where(g => g.Engineer.Id == engineer.Id);
 
-            return Mapper.Instance.Map<IEnumerable<Game>, IEnumerable<AllGameVm>>(game);
+            return Mapper.Instance.Map<IEnumerable<Game>, IEnumerable<MyAllGameVm>>(game);
         }
 
         public DetailsGameVm GetDetailGame(int? gameId)

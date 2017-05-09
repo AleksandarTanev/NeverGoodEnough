@@ -22,7 +22,14 @@
         {
         }
 
-        public IEnumerable<AllGameVictoryConditionVm> GetAllGameMechanics(string userId)
+        public IEnumerable<AllGameVictoryConditionVm> GetAllGameMechanics()
+        {
+            var gameVCondition = this.Context.GameVictoryConditions.ToList();
+
+            return Mapper.Instance.Map<IEnumerable<GameVictoryCondition>, IEnumerable<AllGameVictoryConditionVm>>(gameVCondition);
+        }
+
+        public IEnumerable<MyAllGameVictoryConditionVm> GetAllGameMechanics(string userId)
         {
             var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
 
@@ -31,9 +38,9 @@
                 throw new Exception("Engineer not found!");
             }
 
-            var mechanics = this.Context.GameVictoryConditions.Where(g => g.Engineer.Id == engineer.Id);
+            var gameVCondition = this.Context.GameVictoryConditions.Where(g => g.Engineer.Id == engineer.Id);
             
-            return Mapper.Instance.Map<IEnumerable<GameVictoryCondition>, IEnumerable<AllGameVictoryConditionVm>>(mechanics);
+            return Mapper.Instance.Map<IEnumerable<GameVictoryCondition>, IEnumerable<MyAllGameVictoryConditionVm>>(gameVCondition);
         }
 
         public DetailsGameVictoryConditionVm GetDetailsGameVictoryCondition(int? gameVConditionId)

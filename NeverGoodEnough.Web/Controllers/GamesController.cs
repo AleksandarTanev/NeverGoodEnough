@@ -20,8 +20,16 @@
         }
 
         // GET: Games
+        [Route]
         [Route("All")]
         public ActionResult All()
+        {
+            return View(this.service.GetAllGames());
+        }
+
+        // GET: Games
+        [Route("MyAll")]
+        public ActionResult MyAll()
         {
             return View(this.service.GetAllGames(User.Identity.GetUserId()));
         }

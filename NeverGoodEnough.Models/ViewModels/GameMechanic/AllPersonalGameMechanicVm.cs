@@ -6,5 +6,6 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public string Upvotes { get; set; }
+        public string Username { get; set; }
     }
 }

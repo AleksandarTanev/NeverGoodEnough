@@ -23,6 +23,13 @@
         [Route("All")]
         public ActionResult All()
         {
+            return View(this.service.GetAllGameMechanics());
+        }
+
+        // GET: GameVictoryConditions
+        [Route("MyAll")]
+        public ActionResult MyAll()
+        {
             return View(this.service.GetAllGameMechanics(User.Identity.GetUserId()));
         }
 

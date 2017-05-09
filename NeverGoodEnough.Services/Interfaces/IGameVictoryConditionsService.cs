@@ -6,7 +6,8 @@ namespace NeverGoodEnough.Services.Interfaces
 
     public interface IGameVictoryConditionsService
     {
-        IEnumerable<AllGameVictoryConditionVm> GetAllGameMechanics(string userId);
+        IEnumerable<AllGameVictoryConditionVm> GetAllGameMechanics();
+        IEnumerable<MyAllGameVictoryConditionVm> GetAllGameMechanics(string userId);
         DetailsGameVictoryConditionVm GetDetailsGameVictoryCondition(int? gameVConditionId);
         void CreateGameVictoryConditioc(CreateGameVictoryConditionBm bm, string userId);
         EditGameVictoryConditionVm GetEditGameVictoryConditio(int? gameVConditionId);

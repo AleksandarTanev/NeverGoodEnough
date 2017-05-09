@@ -298,18 +298,18 @@
     <Content Include="Views\GameMechanics\Delete.cshtml" />
     <Content Include="Views\GameMechanics\Details.cshtml" />
     <Content Include="Views\GameMechanics\Edit.cshtml" />
-    <Content Include="Views\GameMechanics\All.cshtml" />
+    <Content Include="Views\GameMechanics\MyAll.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />
     <Content Include="Views\GameVictoryConditions\Create.cshtml" />
     <Content Include="Views\GameVictoryConditions\Delete.cshtml" />
     <Content Include="Views\GameVictoryConditions\Details.cshtml" />
     <Content Include="Views\GameVictoryConditions\Edit.cshtml" />
-    <Content Include="Views\GameVictoryConditions\All.cshtml" />
+    <Content Include="Views\GameVictoryConditions\MyAll.cshtml" />
     <Content Include="Views\Games\Create.cshtml" />
     <Content Include="Views\Games\Delete.cshtml" />
     <Content Include="Views\Games\Details.cshtml" />
     <Content Include="Views\Games\Edit.cshtml" />
-    <Content Include="Views\Games\All.cshtml" />
+    <Content Include="Views\Games\MyAll.cshtml" />
     <Content Include="Views\Games\_AvailableMechanics.cshtml" />
     <Content Include="Views\Games\_AvailableVConditions.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
@@ -317,7 +317,7 @@
     <Content Include="Views\Manage\_ChangePasswordSuccess.cshtml" />
     <Content Include="Views\Shared\Unauthorized.cshtml" />
     <Content Include="Views\Shared\CustomError.cshtml" />
-    <Content Include="Views\GameObjects\All.cshtml" />
+    <Content Include="Views\GameObjects\MyAll.cshtml" />
     <Content Include="Views\GameObjects\Create.cshtml" />
     <Content Include="Views\GameObjects\Delete.cshtml" />
     <Content Include="Views\GameObjects\Details.cshtml" />
@@ -325,6 +325,10 @@
     <Content Include="Views\Shared\_MechanicCard.cshtml" />
     <Content Include="Views\Shared\_ObjectCard.cshtml" />
     <Content Include="Views\Shared\_VictoryConditionCard.cshtml" />
+    <Content Include="Views\GameVictoryConditions\All.cshtml" />
+    <Content Include="Views\Games\All.cshtml" />
+    <Content Include="Views\GameObjects\All.cshtml" />
+    <Content Include="Views\GameMechanics\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

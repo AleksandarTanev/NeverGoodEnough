@@ -32,7 +32,9 @@
             Mapper.Initialize(expression =>
             {
                 // GameMechanic
-                expression.CreateMap<GameMechanic, AllPersonalGameMechanicVm>();
+                expression.CreateMap<GameMechanic, AllPersonalGameMechanicVm>()
+                                    .ForMember(vm => vm.Username, configurationExpression => configurationExpression.MapFrom(g => g.Engineer.User.Name));
+                expression.CreateMap<GameMechanic, MyAllPersonalGameMechanicVm>();
                 expression.CreateMap<GameMechanic, CreateGameMechanicVm>();
                 expression.CreateMap<GameMechanic, DeleteGameMechanicVm>();
                 expression.CreateMap<GameMechanic, DetailsGameMechanicVm>();
@@ -42,7 +44,9 @@
                 expression.CreateMap<EditGameMechanicBm, GameMechanic>();
 
                 // GameVictoryCondition
-                expression.CreateMap<GameVictoryCondition, AllGameVictoryConditionVm>();
+                expression.CreateMap<GameVictoryCondition, AllGameVictoryConditionVm>()
+                    .ForMember(vm => vm.Username, configurationExpression => configurationExpression.MapFrom(g => g.Engineer.User.Name));
+                expression.CreateMap<GameVictoryCondition, MyAllGameVictoryConditionVm>();
                 expression.CreateMap<GameVictoryCondition, CreateGameVictoryConditionVm>();
                 expression.CreateMap<GameVictoryCondition, DeleteGameVictoryConditionVm>();
                 expression.CreateMap<GameVictoryCondition, DetailsGameVictoryConditionVm>();
@@ -52,7 +56,9 @@
                 expression.CreateMap<EditGameVictoryConditionBm, GameVictoryCondition>();
 
                 // GameVictoryCondition
-                expression.CreateMap<GameObject, AllGameObjectVm>();
+                expression.CreateMap<GameObject, AllGameObjectVm>()
+                    .ForMember(vm => vm.Username, configurationExpression => configurationExpression.MapFrom(g => g.Engineer.User.Name));
+                expression.CreateMap<GameObject, MyAllGameObjectVm>();
                 expression.CreateMap<GameObject, CreateGameObjectVm>();
                 expression.CreateMap<GameObject, DeleteGameObjectVm>();
                 expression.CreateMap<GameObject, DetailsGameObjectVm>();
@@ -62,7 +68,9 @@
                 expression.CreateMap<EditGameObjectBm, GameObject>();
 
                 // Game
-                expression.CreateMap<Game, AllGameVm>();
+                expression.CreateMap<Game, AllGameVm>()
+                    .ForMember(vm => vm.Username, configurationExpression => configurationExpression.MapFrom(g => g.Engineer.User.Name));
+                expression.CreateMap<Game, MyAllGameVm>();
                 expression.CreateMap<Game, DeleteGameVm>();
                 expression.CreateMap<Game, EditGameVm>();
                 expression.CreateMap<Game, GreateGameVm>();

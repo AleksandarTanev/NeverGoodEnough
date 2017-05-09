@@ -1,9 +1,9 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
-{
-    <ul class="nav navbar-nav">
 
-        @if (this.User.IsInRole("Administrator"))
+<ul class="nav navbar-nav">
+    @if (Request.IsAuthenticated)
+    {
+        if(this.User.IsInRole("Administrator"))
         {
             <li class="dropdown">
                 <a class="dropdown-toggle" type="button" data-toggle="dropdown">
@@ -24,18 +24,39 @@
 
             <ul class="dropdown-menu">
                 <li>
-                    @Html.ActionLink("Games", "All", "Games", null, null)
+                    @Html.ActionLink("My Games", "MyAll", "Games", null, null)
                 </li>
                 <li>
-                    @Html.ActionLink("Objects", "All", "GameObjects", null, null)
+                    @Html.ActionLink("My Objects", "MyAll", "GameObjects", null, null)
                 </li>
                 <li>
-                    @Html.ActionLink("Mechanics", "All", "GameMechanics", null, null)
+                    @Html.ActionLink("My Mechanics", "MyAll", "GameMechanics", null, null)
                 </li>
                 <li>
-                    @Html.ActionLink("Victory Conditions", "All", "GameVictoryConditions", null, null)
+                    @Html.ActionLink("My Victory Conditions", "MyAll", "GameVictoryConditions", null, null)
                 </li>
             </ul>
         </li>
-    </ul>
-}
+    }
+
+    <li class="dropdown">
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+            <span>Browse</span>
+        </a>
+
+        <ul class="dropdown-menu">
+            <li>
+                @Html.ActionLink("Games", "All", "Games", null, null)
+            </li>
+            <li>
+                @Html.ActionLink("Objects", "All", "GameObjects", null, null)
+            </li>
+            <li>
+                @Html.ActionLink("Mechanics", "All", "GameMechanics", null, null)
+            </li>
+            <li>
+                @Html.ActionLink("Victory Conditions", "All", "GameVictoryConditions", null, null)
+            </li>
+        </ul>
+    </li>
+</ul>

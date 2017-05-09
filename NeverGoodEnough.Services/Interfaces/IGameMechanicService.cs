@@ -6,7 +6,8 @@
 
     public interface IGameMechanicService
     {
-        IEnumerable<AllPersonalGameMechanicVm> GetAllGameMechanics(string userId);
+        IEnumerable<AllPersonalGameMechanicVm> GetAllGameMechanics();
+        IEnumerable<MyAllPersonalGameMechanicVm> GetAllGameMechanics(string userId);
         DetailsGameMechanicVm GetDetailGameMechanic(int? gameMechanicId);
         void CreateGameMechanic(CreateGameMechanicBm bm, string userId);
         EditGameMechanicVm GetEditGameMechanic(int? gameMechanicId);

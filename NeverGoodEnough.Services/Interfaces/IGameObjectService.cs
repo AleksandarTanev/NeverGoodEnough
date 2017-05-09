@@ -6,7 +6,8 @@
 
     public interface IGameObjectService
     {
-        IEnumerable<AllGameObjectVm> GetAllGameObject(string userId);
+        IEnumerable<AllGameObjectVm> GetAllGameObject();
+        IEnumerable<MyAllGameObjectVm> GetAllGameObject(string userId);
         DetailsGameObjectVm GetDetailGameObject(int? gameMechanicId);
         void CreateGameObject(CreateGameObjectBm bm, string userId);
         EditGameObjectVm GetEditGameObject(int? gameMechanicId);

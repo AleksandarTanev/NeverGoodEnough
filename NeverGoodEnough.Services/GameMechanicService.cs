@@ -22,7 +22,14 @@
         {
         }
 
-        public IEnumerable<AllPersonalGameMechanicVm> GetAllGameMechanics(string userId)
+        public IEnumerable<AllPersonalGameMechanicVm> GetAllGameMechanics()
+        {
+            var mechanics = this.Context.GameMechanics.ToList();
+
+            return Mapper.Instance.Map<IEnumerable<GameMechanic>, IEnumerable<AllPersonalGameMechanicVm>>(mechanics);
+        }
+
+        public IEnumerable<MyAllPersonalGameMechanicVm> GetAllGameMechanics(string userId)
         {
             var engineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
 
@@ -33,7 +40,7 @@
 
             var mechanics = this.Context.GameMechanics.Where(g => g.Engineer.Id == engineer.Id);
 
-            return Mapper.Instance.Map<IEnumerable<GameMechanic>, IEnumerable<AllPersonalGameMechanicVm>>(mechanics);
+            return Mapper.Instance.Map<IEnumerable<GameMechanic>, IEnumerable<MyAllPersonalGameMechanicVm>>(mechanics);
         }
 
         public DetailsGameMechanicVm GetDetailGameMechanic(int? gameMechanicId)

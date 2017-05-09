@@ -22,6 +22,13 @@
         [Route("All")]
         public ActionResult All()
         {
+            return View(this.service.GetAllGameObject());
+        }
+
+        // GET: GameObjects
+        [Route("MyAll")]
+        public ActionResult MyAll()
+        {
             return View(this.service.GetAllGameObject(User.Identity.GetUserId()));
         }
 
