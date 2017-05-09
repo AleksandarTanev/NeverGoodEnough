@@ -322,6 +322,9 @@
     <Content Include="Views\GameObjects\Delete.cshtml" />
     <Content Include="Views\GameObjects\Details.cshtml" />
     <Content Include="Views\GameObjects\Edit.cshtml" />
+    <Content Include="Views\Shared\_MechanicCard.cshtml" />
+    <Content Include="Views\Shared\_ObjectCard.cshtml" />
+    <Content Include="Views\Shared\_VictoryConditionCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

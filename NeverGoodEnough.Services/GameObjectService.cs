@@ -5,8 +5,10 @@
     using System.Linq;
     using AutoMapper;
     using NeverGoodEnough.Data.Interfaces;
+    using NeverGoodEnough.Models;
     using NeverGoodEnough.Models.BindingModels.GameObject;
     using NeverGoodEnough.Models.EntityModels;
+    using NeverGoodEnough.Models.ViewModels.GameMechanic;
     using NeverGoodEnough.Models.ViewModels.GameObject;
     using NeverGoodEnough.Services.Interfaces;
     public class GameObjectService : Service, IGameObjectService
@@ -43,7 +45,13 @@
                 throw new Exception("Object not found!");
             }
 
-            return Mapper.Instance.Map<GameObject, DetailsGameObjectVm>(gameObject);
+            DetailsGameObjectVm vm = Mapper.Instance.Map<GameObject, DetailsGameObjectVm>(gameObject);
+            if (string.IsNullOrEmpty(vm.ImageUrl))
+            {
+                vm.ImageUrl = Constants.DefaultImageUrl;
+            }
+
+            return vm;
         }
 
         public void CreateGameObject(CreateGameObjectBm bm, string userId)
@@ -83,6 +91,16 @@
 
             gameObject.Name = bm.Name;
             gameObject.Description = bm.Description;
+
+            if (!string.IsNullOrEmpty(bm.ImageUrl))
+            {
+                gameObject.ImageUrl = bm.ImageUrl;
+            }
+
+            if (!string.IsNullOrEmpty(bm.Tags))
+            {
+                gameObject.Tags = bm.Tags;
+            }
 
             this.Context.SaveChanges();
         }

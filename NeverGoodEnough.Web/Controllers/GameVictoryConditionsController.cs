@@ -57,7 +57,7 @@
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Create")]
-        public ActionResult Create([Bind(Include = "Name,Description")] CreateGameVictoryConditionBm bm)
+        public ActionResult Create([Bind(Include = "Name,Description,ImageUrl,Tags")] CreateGameVictoryConditionBm bm)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Edit/{id?}")]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description")] EditGameVictoryConditionBm bm)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,ImageUrl,Tags")] EditGameVictoryConditionBm bm)
         {
             if (ModelState.IsValid)
             {

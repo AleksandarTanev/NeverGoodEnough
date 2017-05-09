@@ -5,6 +5,7 @@
     using System.Linq;
     using AutoMapper;
     using NeverGoodEnough.Data.Interfaces;
+    using NeverGoodEnough.Models;
     using NeverGoodEnough.Models.BindingModels.GameVictoryConditions;
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.GameVictoryConditions;
@@ -43,7 +44,13 @@
                 throw new Exception("Victory Condition not found!");
             }
 
-            return Mapper.Instance.Map<GameVictoryCondition, DetailsGameVictoryConditionVm>(gameVCondition);
+            DetailsGameVictoryConditionVm vm = Mapper.Instance.Map<GameVictoryCondition, DetailsGameVictoryConditionVm>(gameVCondition);
+            if (string.IsNullOrEmpty(vm.ImageUrl))
+            {
+                vm.ImageUrl = Constants.DefaultImageUrl;
+            }
+
+            return vm;
         }
 
         public void CreateGameVictoryConditioc(CreateGameVictoryConditionBm bm, string userId)
@@ -83,6 +90,16 @@
 
             gameVCondition.Name = bm.Name;
             gameVCondition.Description = bm.Description;
+
+            if (!string.IsNullOrEmpty(bm.ImageUrl))
+            {
+                gameVCondition.ImageUrl = bm.ImageUrl;
+            }
+
+            if (!string.IsNullOrEmpty(bm.Tags))
+            {
+                gameVCondition.Tags = bm.Tags;
+            }
 
             this.Context.SaveChanges();
         }

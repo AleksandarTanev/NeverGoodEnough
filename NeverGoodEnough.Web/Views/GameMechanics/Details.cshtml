@@ -7,26 +7,7 @@
 <h2>Details</h2>
 <hr />
 
-<div class="card">
-    <img class="card-image" src="@Model.ImageUrl" alt="Image"/>
-    <div class="card-container">
-        <h3>
-            Mechanic: <br/>
-            <span style="color: black;">@Html.DisplayFor(model => model.Name)</span>
-        </h3>
-        <p>
-            @Html.DisplayFor(model => model.Description)
-        </p>
-        @if (@Model.Tags.Length != 0)
-        {
-            <p>@Model.Tags</p> 
-        }
-    </div>
-    <div class="card-footer">
-        Upvotes: @Model.Upvotes
-        <span style="float: right;">@Model.CreationDate.ToString("dd-MM-yyyy")</span>       
-    </div>
-</div>
+@Html.Partial("_MechanicCard", @Model)
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

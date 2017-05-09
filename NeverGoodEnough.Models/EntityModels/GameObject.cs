@@ -19,6 +19,8 @@
         [StringLength(3000), Required]
         public string Description { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public DateTime CreationDate { get; set; }
 
         public bool IsPrivate { get; set; }
