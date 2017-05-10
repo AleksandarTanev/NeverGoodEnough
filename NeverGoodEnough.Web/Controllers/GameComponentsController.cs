@@ -3,38 +3,37 @@
     using System.Net;
     using System.Web.Mvc;
     using Microsoft.AspNet.Identity;
-    using NeverGoodEnough.Models.BindingModels.Game;
-    using NeverGoodEnough.Models.ViewModels.Games;
+    using NeverGoodEnough.Models.BindingModels.GameMechanic;
+    using NeverGoodEnough.Models.ViewModels.GameMechanic;
     using NeverGoodEnough.Services.Interfaces;
-    using Services;
 
     [Authorize]
-    [RoutePrefix("Games")]
-    public class GamesController : Controller
+    [RoutePrefix("GameComponents")]
+    public class GameComponentsController : Controller
     {
-        private IGamesService service;
+        private IGameComponentService service;
 
-        public GamesController(IGamesService service)
+        public GameComponentsController(IGameComponentService service)
         {
             this.service = service;
         }
 
-        // GET: Games
+        // GET: GameMechanics
         [Route]
         [Route("All")]
         public ActionResult All()
         {
-            return View(this.service.GetAllGames());
+            return View(this.service.GetAllGameComponents());
         }
 
-        // GET: Games
+        // GET: GameMechanics
         [Route("MyAll")]
         public ActionResult MyAll()
         {
-            return View(this.service.GetAllGames(User.Identity.GetUserId()));
+            return View(this.service.GetAllGameComponents(User.Identity.GetUserId()));
         }
 
-        // GET: Games/Details/5
+        // GET: GameMechanics/Details/5
         [Route("Details/{id?}")]
         public ActionResult Details(int? id)
         {
@@ -42,41 +41,41 @@
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DetailsGameVm vm = this.service.GetDetailGame(id);
+            DetailsGameComponentVm gameComponent = this.service.GetDetailGameComponent(id);
 
-            if (vm == null)
+            if (gameComponent == null)
             {
                 return HttpNotFound();
             }
 
-            return View(vm);
+            return View(gameComponent);
         }
 
-        // GET: Games/Create
+        // GET: GameMechanics/Create
         [Route("Create")]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Games/Create
+        // POST: GameMechanics/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Create")]
-        public ActionResult Create([Bind(Include = "Name,Description")] CreateGameBm bm)
+        public ActionResult Create([Bind(Include = "Name,Description,ImageUrl,Tags,Type")] CreateGameComponentBm bm)
         {
             if (ModelState.IsValid)
             {
-                this.service.CreateGame(bm, User.Identity.GetUserId());
-                return RedirectToAction("MyAll");
+                this.service.CreateGameComponent(bm, User.Identity.GetUserId());
+                return RedirectToAction("All");
             }
 
             return View();
         }
 
-        // GET: Games/Edit/5
+        // GET: GameMechanics/Edit/5
         [Route("Edit/{id?}")]
         public ActionResult Edit(int? id)
         {
@@ -85,33 +84,32 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            EditGameVm vm = this.service.GetEditGame(id);
-            if (vm == null)
+            EditGameComponentVm gameComponent = this.service.GetEditGameComponent(id);
+            if (gameComponent == null)
             {
                 return HttpNotFound();
             }
-
-            return View(vm);
+            return View(gameComponent);
         }
 
-        // POST: Games/Edit/5
+        // POST: GameMechanics/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Edit/{id?}")]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description")] EditGameBm bm)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,ImageUrl,Tags,Type")] EditGameComponentBm bm)
         {
             if (ModelState.IsValid)
             {
-                this.service.EditGame(bm);
+                this.service.EditGameComponent(bm);
 
-                return RedirectToAction("MyAll");
+                return RedirectToAction("All");
             }
             return View();
         }
 
-        // GET: Games/Delete/5
+        // GET: GameMechanics/Delete/5
         [Route("Delete/{id?}")]
         public ActionResult Delete(int? id)
         {
@@ -120,56 +118,51 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            DeleteGameVm gameMechanic = this.service.GetDeleteGame(id);
+            DeleteGameComponentVm gameComponent = this.service.GetDeleteGameComponent(id);
 
-            if (gameMechanic == null)
+            if (gameComponent == null)
             {
                 return HttpNotFound();
             }
 
-            return View(gameMechanic);
+            return View(gameComponent);
         }
 
-        // POST: Games/Delete/5
+        // POST: GameMechanics/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Route("Delete/{id?}")]
         public ActionResult DeleteConfirmed(int id)
         {
-            this.service.DeleteGame(id);
+            this.service.DeleteGameComponent(id);
 
-            return RedirectToAction("MyAll");
+            return RedirectToAction("All");
         }
 
-        [ChildActionOnly]
-        [Route("AvailableGames")]
-        public ActionResult AvailableGames()
+        [HttpGet]
+        [Route("AddToGame")]
+        public ActionResult AddToGame(int id)
         {
-            return PartialView("_AvailableGames", this.service.GetAllGames(User.Identity.GetUserId()));
+            DetailsGameComponentVm gameComponent = this.service.GetDetailGameComponent(id);
+
+            if (gameComponent == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(gameComponent);
         }
 
         [HttpPost]
-        [Route("AddComponent")]
-        public ActionResult AddComponent(int gameId, int mechanicId)
+        [Route("AddToGame")]
+        public ActionResult AddToGame(int componentId, int gameId)
         {
             if (ModelState.IsValid)
             {
-                this.service.AddComponentToGame(gameId, mechanicId, User.Identity.GetUserId());
+                this.service.AddToGame(componentId, gameId);
             }
 
-            return RedirectToAction("Details", new { id = gameId });
-        }
-
-        [HttpPost]
-        [Route("RemoveComponent")]
-        public ActionResult RemoveComponent(int gameId, int componentId)
-        {
-            if (ModelState.IsValid)
-            {
-                this.service.RemoveComponentFromGame(gameId, componentId, User.Identity.GetUserId());
-            }
-
-            return RedirectToAction("Edit", new { id = gameId });
+            return RedirectToAction("All");
         }
     }
 }

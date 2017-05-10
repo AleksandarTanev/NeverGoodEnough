@@ -63,16 +63,12 @@
   <ItemGroup>
     <Compile Include="AccountService.cs" />
     <Compile Include="EngineersService.cs" />
-    <Compile Include="GameMechanicService.cs" />
-    <Compile Include="GameObjectService.cs" />
+    <Compile Include="GameComponentService.cs" />
     <Compile Include="GamesService.cs" />
-    <Compile Include="GameVictoryConditionsService.cs" />
     <Compile Include="Interfaces\IEngineersService.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />
-    <Compile Include="Interfaces\IGameObjectService.cs" />
     <Compile Include="Interfaces\IGamesService.cs" />
-    <Compile Include="Interfaces\IGameVictoryConditionsService.cs" />
-    <Compile Include="Interfaces\IGameMechanicService.cs" />
+    <Compile Include="Interfaces\IGameComponentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service.cs" />
   </ItemGroup>

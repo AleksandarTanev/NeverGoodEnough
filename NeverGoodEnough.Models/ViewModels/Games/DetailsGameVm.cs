@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using NeverGoodEnough.Models.ViewModels.GameMechanic;
-    using NeverGoodEnough.Models.ViewModels.GameVictoryConditions;
 
     public class DetailsGameVm
     {
@@ -14,8 +13,7 @@
 
         public DateTime CreationDate { get; set; }
 
-        public virtual ICollection<DetailsGameMechanicVm> GameMechanics { get; set; }
+        public virtual ICollection<DetailsGameComponentVm> GameMechanics { get; set; }
 
-        public virtual ICollection<DetailsGameVictoryConditionVm> GameVictoryConditions { get; set; }
     }
 }

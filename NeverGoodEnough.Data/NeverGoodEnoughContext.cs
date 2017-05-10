@@ -15,9 +15,7 @@ namespace NeverGoodEnough.Data
 
         public DbSet<Engineer> Engineers { get; set; }
         public DbSet<Game> Games { get; set; }
-        public DbSet<GameMechanic> GameMechanics { get; set; }
-        public DbSet<GameVictoryCondition> GameVictoryConditions { get; set; }
-        public DbSet<GameObject> GameObjects { get; set; }
+        public DbSet<GameComponent> GameComponents { get; set; }
 
         public static NeverGoodEnoughContext Create()
         {
@@ -33,23 +31,13 @@ namespace NeverGoodEnough.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Game>()
-               .HasMany<GameMechanic>(s => s.GameMechanics)
+               .HasMany<GameComponent>(s => s.GameComponents)
                .WithMany(c => c.Games)
                .Map(cs =>
                {
                    cs.MapLeftKey("GameId");
-                   cs.MapRightKey("GameMechanicId");
-                   cs.ToTable("GameGameMechanic");
-               });
-
-            modelBuilder.Entity<Game>()
-               .HasMany<GameVictoryCondition>(s => s.GameVictoryConditions)
-               .WithMany(c => c.Games)
-               .Map(cs =>
-               {
-                   cs.MapLeftKey("GameId");
-                   cs.MapRightKey("GameVictoryConditionId");
-                   cs.ToTable("GameGameVictoryCondition");
+                   cs.MapRightKey("GameComponentId");
+                   cs.ToTable("GameGameComponent");
                });
         }
     }

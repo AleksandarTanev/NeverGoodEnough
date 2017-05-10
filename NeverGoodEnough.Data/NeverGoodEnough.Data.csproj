@@ -63,9 +63,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Mocks\FakeDbSet.cs" />
     <Compile Include="Mocks\FakeEngineersDbSet.cs" />
-    <Compile Include="Mocks\FakeGameMechanicsDbSet.cs" />
+    <Compile Include="Mocks\FakeGameComponentDbSet.cs" />
     <Compile Include="Mocks\FakeGamesDbSet.cs" />
-    <Compile Include="Mocks\FakeGameVictoryConditionsDbSet.cs" />
     <Compile Include="Mocks\FakeNeverGoodEnoughContext.cs" />
     <Compile Include="NeverGoodEnoughContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,8 +8,6 @@ namespace NeverGoodEnough.Web
     using System;
     using System.Web;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-    using NeverGoodEnough.Data;
-    using NeverGoodEnough.Data.Interfaces;
     using NeverGoodEnough.Services;
     using NeverGoodEnough.Services.Interfaces;
     using Ninject;
@@ -65,12 +63,10 @@ namespace NeverGoodEnough.Web
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IGameMechanicService>().To<GameMechanicService>();
-            kernel.Bind<IGameVictoryConditionsService>().To<GameVictoryConditionsService>();
+            kernel.Bind<IGameComponentService>().To<GameComponentService>();
             kernel.Bind<IGamesService>().To<GamesService>();
             kernel.Bind<IAccountService>().To<AccountService>();
             kernel.Bind<IEngineersService>().To<EngineersService>();
-            kernel.Bind<IGameObjectService>().To<GameObjectService>();
         }        
     }
 }

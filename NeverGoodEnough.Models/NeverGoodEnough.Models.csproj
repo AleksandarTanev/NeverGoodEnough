@@ -50,8 +50,8 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -97,21 +97,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BindingModels\GameMechanic\CreateGameMechanicBm.cs" />
-    <Compile Include="BindingModels\GameMechanic\EditGameMechanicBm.cs" />
-    <Compile Include="BindingModels\GameObject\CreateGameObjectBm.cs" />
-    <Compile Include="BindingModels\GameObject\EditGameObjectBm.cs" />
-    <Compile Include="BindingModels\GameVictoryConditions\CreateGameVictoryConditionBm.cs" />
-    <Compile Include="BindingModels\GameVictoryConditions\EditGameVictoryConditionBm.cs" />
+    <Compile Include="BindingModels\GameComponent\CreateGameComponentBm.cs" />
+    <Compile Include="BindingModels\GameComponent\EditGameComponentBm.cs" />
     <Compile Include="BindingModels\Game\CreateGameBm.cs" />
     <Compile Include="BindingModels\Game\EditGameBm.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="EntityModels\Engineer.cs" />
     <Compile Include="EntityModels\Game.cs" />
-    <Compile Include="EntityModels\GameMechanic.cs" />
-    <Compile Include="EntityModels\GameObject.cs" />
-    <Compile Include="EntityModels\GameVictoryCondition.cs" />
+    <Compile Include="EntityModels\GameComponent.cs" />
+    <Compile Include="Enums\ComponentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
@@ -123,32 +118,19 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\AllEngineerVm.cs" />
-    <Compile Include="ViewModels\GameMechanic\AddInGameGameMechanic.cs" />
-    <Compile Include="ViewModels\GameMechanic\AllPersonalGameMechanicVm.cs" />
-    <Compile Include="ViewModels\GameMechanic\CreateGameMechanicVm.cs" />
-    <Compile Include="ViewModels\GameMechanic\DeleteGameMechanicVm.cs" />
-    <Compile Include="ViewModels\GameMechanic\DetailsGameMechanicVm.cs" />
-    <Compile Include="ViewModels\GameMechanic\EditGameMechanicVm.cs" />
-    <Compile Include="ViewModels\GameMechanic\MyAllPersonalGameMechanicVm.cs" />
-    <Compile Include="ViewModels\GameObject\AddInGameGameObject.cs" />
-    <Compile Include="ViewModels\GameObject\AllGameObjectVm.cs" />
-    <Compile Include="ViewModels\GameObject\CreateGameObjectVm.cs" />
-    <Compile Include="ViewModels\GameObject\DeleteGameObjectVm.cs" />
-    <Compile Include="ViewModels\GameObject\DetailsGameObjectVm.cs" />
-    <Compile Include="ViewModels\GameObject\EditGameObjectVm.cs" />
-    <Compile Include="ViewModels\GameObject\MyAllGameObjectVm.cs" />
+    <Compile Include="ViewModels\GameComponent\AddInGameGameComponent.cs" />
+    <Compile Include="ViewModels\GameComponent\AllPersonalGameComponentVm.cs" />
+    <Compile Include="ViewModels\GameComponent\CreateGameComponentVm.cs" />
+    <Compile Include="ViewModels\GameComponent\DeleteGameComponentVm.cs" />
+    <Compile Include="ViewModels\GameComponent\DetailsGameComponentVm.cs" />
+    <Compile Include="ViewModels\GameComponent\EditGameComponentVm.cs" />
+    <Compile Include="ViewModels\GameComponent\MyAllPersonalGameComponentVm.cs" />
     <Compile Include="ViewModels\Games\AllGameVm.cs" />
     <Compile Include="ViewModels\Games\DeleteGameVm.cs" />
     <Compile Include="ViewModels\Games\DetailsGameVm.cs" />
     <Compile Include="ViewModels\Games\EditGameVm.cs" />
     <Compile Include="ViewModels\Games\GreateGameVm.cs" />
     <Compile Include="ViewModels\Games\MyAllGameVm.cs" />
-    <Compile Include="ViewModels\GameVictoryConditions\AllGameVictoryConditionVm.cs" />
-    <Compile Include="ViewModels\GameVictoryConditions\CreateGameVictoryConditionVm.cs" />
-    <Compile Include="ViewModels\GameVictoryConditions\DeleteGameVictoryConditionVm.cs" />
-    <Compile Include="ViewModels\GameVictoryConditions\DetailsGameVictoryConditionVm.cs" />
-    <Compile Include="ViewModels\GameVictoryConditions\EditGameVictoryConditionVm.cs" />
-    <Compile Include="ViewModels\GameVictoryConditions\MyAllGameVictoryConditionVm.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\ConfigureTwoFactorViewModel.cs" />

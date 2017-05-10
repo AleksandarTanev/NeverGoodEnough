@@ -14,9 +14,7 @@ namespace NeverGoodEnough.Services.Interfaces
         void EditGame(EditGameBm bm);
         DeleteGameVm GetDeleteGame(int? id);
         void DeleteGame(int? id);
-        void AddMechanicToGame(int gameId, int mechanicId, string getUserId);
-        void AddVictoryConditionToGame(int gameId, int victoryConditionId, string getUserId);
-        void RemoveMechanicFromGame(int gameId, int mechanicId, string getUserId);
-        void RemoveVictoryConditionFromGame(int gameId, int victoryConditionId, string getUserId);
+        void AddComponentToGame(int gameId, int mechanicId, string getUserId);
+        void RemoveComponentFromGame(int gameId, int mechanicId, string getUserId);
     }
 }

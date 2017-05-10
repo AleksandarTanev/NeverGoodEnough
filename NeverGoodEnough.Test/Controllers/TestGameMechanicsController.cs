@@ -14,32 +14,32 @@
     [TestClass]
     public class TestGameMechanicsController
     {
-        private GameMechanicsController _controller;
-        private IGameMechanicService _service;
+        private GameComponentsController _controller;
+        private IGameComponentService _service;
         private INeverGoodEnoughContext _context;
-        private List<GameMechanic> gameMechanics;
+        private List<GameComponent> gameMechanics;
 
         private void ConfigureMapper()
         {
             Mapper.Initialize(expression =>
             {
-                expression.CreateMap<GameMechanic, AllPersonalGameMechanicVm>();
+                expression.CreateMap<GameComponent, AllPersonalGameComponentVm>();
             });
         }
 
         [TestInitialize]
         public void Init()
         {
-            this.ConfigureMapper();
-            this.gameMechanics = new List<GameMechanic>()
+          /*  this.ConfigureMapper();
+            this.gameMechanics = new List<GameComponent>()
             {
-                new GameMechanic()
+                new GameComponent()
                 {
                     Id = 1,
                     Name = "Running",
                     Description = "Fast travel"
                 },
-                new GameMechanic()
+                new GameComponent()
                 {
                     Id = 2,
                     Name = "Walking",
@@ -53,8 +53,8 @@
                 this._context.GameMechanics.Add(gameMechanic);
             }
 
-            this._service = new GameMechanicService(this._context);
-            this._controller = new GameMechanicsController(this._service);
+            this._service = new GameComponentService(this._context);
+            this._controller = new GameComponentsController(this._service);*/
         }
 
         /*

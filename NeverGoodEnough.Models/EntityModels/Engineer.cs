@@ -7,9 +7,7 @@
         public Engineer()
         {
             this.Games = new HashSet<Game>();
-            this.GameMechanics = new HashSet<GameMechanic>();
-            this.GameVictoryConditions = new HashSet<GameVictoryCondition>();
-            this.GameObjects = new HashSet<GameObject>();
+            this.GameMechanics = new HashSet<GameComponent>();
         }
 
         public int Id { get; set; }
@@ -18,9 +16,6 @@
 
         public virtual ICollection<Game> Games { get; set; }
 
-        public virtual ICollection<GameMechanic> GameMechanics { get; set; }
-
-        public virtual ICollection<GameVictoryCondition> GameVictoryConditions { get; set; }
-        public virtual ICollection<GameObject> GameObjects { get; set; }
+        public virtual ICollection<GameComponent> GameMechanics { get; set; }
     }
 }

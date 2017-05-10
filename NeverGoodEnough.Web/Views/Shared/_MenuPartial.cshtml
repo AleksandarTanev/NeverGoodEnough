@@ -1,6 +1,4 @@
-﻿@using Microsoft.AspNet.Identity
-
-<ul class="nav navbar-nav">
+﻿<ul class="nav navbar-nav">
     @if (Request.IsAuthenticated)
     {
         if(this.User.IsInRole("Administrator"))
@@ -27,13 +25,7 @@
                     @Html.ActionLink("My Games", "MyAll", "Games", null, null)
                 </li>
                 <li>
-                    @Html.ActionLink("My Objects", "MyAll", "GameObjects", null, null)
-                </li>
-                <li>
-                    @Html.ActionLink("My Mechanics", "MyAll", "GameMechanics", null, null)
-                </li>
-                <li>
-                    @Html.ActionLink("My Victory Conditions", "MyAll", "GameVictoryConditions", null, null)
+                    @Html.ActionLink("My Components", "MyAll", "GameComponents", null, null)
                 </li>
             </ul>
         </li>
@@ -49,13 +41,7 @@
                 @Html.ActionLink("Games", "All", "Games", null, null)
             </li>
             <li>
-                @Html.ActionLink("Objects", "All", "GameObjects", null, null)
-            </li>
-            <li>
-                @Html.ActionLink("Mechanics", "All", "GameMechanics", null, null)
-            </li>
-            <li>
-                @Html.ActionLink("Victory Conditions", "All", "GameVictoryConditions", null, null)
+                @Html.ActionLink("Components", "All", "GameComponents", null, null)
             </li>
         </ul>
     </li>

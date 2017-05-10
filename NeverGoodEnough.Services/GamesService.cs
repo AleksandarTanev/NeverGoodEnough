@@ -9,7 +9,6 @@
     using NeverGoodEnough.Models.BindingModels.Game;
     using NeverGoodEnough.Models.EntityModels;
     using NeverGoodEnough.Models.ViewModels.GameMechanic;
-    using NeverGoodEnough.Models.ViewModels.GameVictoryConditions;
     using NeverGoodEnough.Services.Interfaces;
 
     public class GamesService : Service, IGamesService
@@ -61,8 +60,7 @@
                 CreationDate = game.CreationDate
             };
 
-            vm.GameMechanics = Mapper.Instance.Map<ICollection<GameMechanic>, ICollection<DetailsGameMechanicVm>>(game.GameMechanics);
-            vm.GameVictoryConditions = Mapper.Instance.Map<ICollection<GameVictoryCondition>, ICollection<DetailsGameVictoryConditionVm>>(game.GameVictoryConditions);
+            vm.GameMechanics = Mapper.Instance.Map<ICollection<GameComponent>, ICollection<DetailsGameComponentVm>>(game.GameComponents);
 
             return vm;
         }
@@ -99,8 +97,7 @@
                 CreationDate = game.CreationDate
             };
 
-            vm.GameMechanics = Mapper.Instance.Map<ICollection<GameMechanic>, ICollection<DetailsGameMechanicVm>>(game.GameMechanics);
-            vm.GameVictoryConditions = Mapper.Instance.Map<ICollection<GameVictoryCondition>, ICollection<DetailsGameVictoryConditionVm>>(game.GameVictoryConditions);
+            vm.GameMechanics = Mapper.Instance.Map<ICollection<GameComponent>, ICollection<DetailsGameComponentVm>>(game.GameComponents);
 
             return vm;
         }
@@ -142,7 +139,7 @@
             this.Context.SaveChanges();
         }
 
-        public void AddMechanicToGame(int gameId, int mechanicId, string userId)
+        public void AddComponentToGame(int gameId, int mechanicId, string userId)
         {
             var currentEngineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
             if (currentEngineer == null)
@@ -156,22 +153,22 @@
                 throw new Exception("Game not found!");
             }
 
-            GameMechanic gameMechanic = this.Context.GameMechanics.Find(mechanicId);
-            if (gameMechanic == null)
+            GameComponent gameComponent = this.Context.GameComponents.Find(mechanicId);
+            if (gameComponent == null)
             {
-                throw new Exception("Mechanic not found!");
+                throw new Exception("Component not found!");
             }
 
-            if (game.Engineer.Id != currentEngineer.Id || gameMechanic.Engineer.Id != currentEngineer.Id)
+            if (game.Engineer.Id != currentEngineer.Id || gameComponent.Engineer.Id != currentEngineer.Id)
             {
                 throw new Exception("Incorrect engineer!");
             }
 
-            game.GameMechanics.Add(gameMechanic);
+            game.GameComponents.Add(gameComponent);
             this.Context.SaveChanges();
         }
 
-        public void AddVictoryConditionToGame(int gameId, int victoryConditionId, string userId)
+        public void RemoveComponentFromGame(int gameId, int mechanicId, string userId)
         {
             var currentEngineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
             if (currentEngineer == null)
@@ -185,82 +182,20 @@
                 throw new Exception("Game not found!");
             }
 
-            GameVictoryCondition gameVictoryCondition = this.Context.GameVictoryConditions.Find(victoryConditionId);
-            if (gameVictoryCondition == null)
+            GameComponent gameComponent = this.Context.GameComponents.Find(mechanicId);
+            if (gameComponent == null)
             {
-                throw new Exception("Victory Condition not found!");
+                throw new Exception("Component not found!");
             }
 
-            if (game.Engineer.Id != currentEngineer.Id || gameVictoryCondition.Engineer.Id != currentEngineer.Id)
+            if (game.Engineer.Id != currentEngineer.Id || gameComponent.Engineer.Id != currentEngineer.Id)
             {
                 throw new Exception("Incorrect engineer!");
             }
 
-            game.GameVictoryConditions.Add(gameVictoryCondition);
-            this.Context.SaveChanges();
-        }
-
-        public void RemoveMechanicFromGame(int gameId, int mechanicId, string userId)
-        {
-            var currentEngineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
-            if (currentEngineer == null)
+            if (game.GameComponents.Contains(gameComponent))
             {
-                throw new Exception("Engineer not found!");
-            }
-
-            Game game = this.Context.Games.Find(gameId);
-            if (game == null)
-            {
-                throw new Exception("Game not found!");
-            }
-
-            GameMechanic gameMechanic = this.Context.GameMechanics.Find(mechanicId);
-            if (gameMechanic == null)
-            {
-                throw new Exception("Mechanic not found!");
-            }
-
-            if (game.Engineer.Id != currentEngineer.Id || gameMechanic.Engineer.Id != currentEngineer.Id)
-            {
-                throw new Exception("Incorrect engineer!");
-            }
-
-            if (game.GameMechanics.Contains(gameMechanic))
-            {
-                game.GameMechanics.Remove(gameMechanic);
-                this.Context.SaveChanges();
-            }
-        }
-
-        public void RemoveVictoryConditionFromGame(int gameId, int victoryConditionId, string userId)
-        {
-            var currentEngineer = this.Context.Engineers.FirstOrDefault(e => e.User.Id == userId);
-            if (currentEngineer == null)
-            {
-                throw new Exception("Engineer not found!");
-            }
-
-            Game game = this.Context.Games.Find(gameId);
-            if (game == null)
-            {
-                throw new Exception("Game not found!");
-            }
-
-            GameVictoryCondition gameVictoryCondition = this.Context.GameVictoryConditions.Find(victoryConditionId);
-            if (gameVictoryCondition == null)
-            {
-                throw new Exception("Victory Condition not found!");
-            }
-
-
-            if (game.Engineer.Id != currentEngineer.Id || gameVictoryCondition.Engineer.Id != currentEngineer.Id)
-            {
-                throw new Exception("Incorrect engineer!");
-            }
-
-            if (game.GameVictoryConditions.Contains(gameVictoryCondition))
-            {
-                game.GameVictoryConditions.Remove(gameVictoryCondition);
+                game.GameComponents.Remove(gameComponent);
                 this.Context.SaveChanges();
             }
         }

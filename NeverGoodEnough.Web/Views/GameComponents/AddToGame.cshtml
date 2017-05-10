@@ -1,0 +1,17 @@
+﻿@model NeverGoodEnough.Models.ViewModels.GameMechanic.DetailsGameComponentVm
+
+@{
+    ViewBag.Title = "AddToGame";
+}
+
+<h2>Add To Game</h2>
+<hr />
+
+@Html.Partial("_ComponentCard", @Model)
+
+@using (@Html.BeginForm())
+{
+    @Html.Hidden("componentId", @Model.Id)
+    @Html.Action("AvailableGames", "Games")
+    <input type="submit" value="Add" class="btn btn-default" />
+}

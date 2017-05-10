@@ -9,9 +9,7 @@
     {
         DbSet<Engineer> Engineers { get; set; }
         DbSet<Game> Games { get; set; }
-        DbSet<GameMechanic> GameMechanics { get; set; }
-        DbSet<GameVictoryCondition> GameVictoryConditions { get; set; }
-        DbSet<GameObject> GameObjects { get; set; }
+        DbSet<GameComponent> GameComponents { get; set; }
         IDbSet<ApplicationUser> Users { get; set; }
         IDbSet<IdentityRole> Roles { get; set; }
         int SaveChanges();

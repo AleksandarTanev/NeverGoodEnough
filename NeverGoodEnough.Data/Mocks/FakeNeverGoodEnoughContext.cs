@@ -11,19 +11,14 @@
         {
             this.Engineers = new FakeEngineersDbSet();
             this.Games = new FakeGamesDbSet();
-            this.GameMechanics = new FakeGameMechanicsDbSet();
-            this.GameVictoryConditions = new FakeGameVictoryConditionsDbSet();
+            this.GameComponents = new FakeGameComponentDbSet();
         }
 
         public DbSet<Engineer> Engineers { get; set; }
 
         public DbSet<Game> Games { get; set; }
 
-        public DbSet<GameMechanic> GameMechanics { get; set; }
-
-        public DbSet<GameVictoryCondition> GameVictoryConditions { get; set; }
-
-        public DbSet<GameObject> GameObjects { get; set; }
+        public DbSet<GameComponent> GameComponents { get; set; }
 
         public IDbSet<ApplicationUser> Users { get; set; }
 

@@ -12,10 +12,7 @@ namespace NeverGoodEnough.Models.ViewModels
         [DisplayName("Created Games")]
         public int Games { get; set; }
 
-        [DisplayName("Created Mechanics")]
-        public int GameMechanics { get; set; }
-
-        [DisplayName("Created Victory Conditions")]
-        public int GameVictoryConditions { get; set; }
+        [DisplayName("Created Components")]
+        public int GameComponents { get; set; }
     }
 }

@@ -1,0 +1,15 @@
+﻿@model NeverGoodEnough.Models.ViewModels.GameMechanic.DetailsGameComponentVm
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<hr />
+
+@Html.Partial("_ComponentCard", @Model)
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "MyAll")
+</p>
